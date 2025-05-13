@@ -51,29 +51,45 @@ class UserResource extends Resource
                             ])
                             ->required(),
 
+                        // Forms\Components\FileUpload::make('profile_photo_path')
+                        //     ->label('Profile Photo')
+                        //     ->image()
+                        //     ->directory('profile-photos')
+                        //     ->visibility('public')
+                        //     ->imageEditor(),
+
                         Forms\Components\FileUpload::make('profile_photo_path')
                             ->label('Profile Photo')
                             ->image()
                             ->directory('profile-photos')
                             ->visibility('public')
                             ->imageEditor(),
+
+
+
                     ])->columns(2),
 
                 Forms\Components\Section::make('Authentication')
                     ->schema([
+                        // Password field for CREATE
                         Forms\Components\TextInput::make('password')
                             ->password()
                             ->required()
                             ->maxLength(255)
                             ->dehydrateStateUsing(fn($state) => Hash::make($state))
-                            ->visibleOn('create'),
+                            ->dehydrated(fn($state) => filled($state))
+                            ->visibleOn('create')
+                            ->autocomplete('new-password'),
 
+                        // Password field for EDIT
                         Forms\Components\TextInput::make('password')
                             ->password()
                             ->maxLength(255)
                             ->dehydrateStateUsing(fn($state) => !empty($state) ? Hash::make($state) : null)
-                            ->dehydrated(fn($state) => !empty($state))
-                            ->visibleOn('edit'),
+                            ->dehydrated(fn($state) => filled($state))
+                            ->visibleOn('edit')
+                            ->helperText('Leave empty to keep current password')
+                            ->autocomplete('new-password'),
 
                         Forms\Components\DateTimePicker::make('email_verified_at'),
                     ]),

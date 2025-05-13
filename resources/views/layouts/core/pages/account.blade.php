@@ -2,13 +2,14 @@
 
 @section('content')
     <section class="section-main section-main-ver">
-        <a href="{{route('profile')}}">
+        <a href="{{ route('profile') }}">
             <div class="account-profile-main ">
                 <div class="account-profile-main-sub">
-                    <img class="account-img" src="assets/images/account-profile/account-img.jpg" alt="account-img">
+                    <img class="account-img"
+                        src="{{ $user->profile_photo_path ? asset('storage/' . $user->profile_photo_path) : asset('assets/images/account-profile/account-img.jpg') }}" alt="account-img" style="height: 80px;">
                     <div>
-                        <h2 class="Jessica">Jordan Smith</h2>
-                        <p class="Jessica-number">jordansmith@mail.com</p>
+                        <h2 class="Jessica">{{ $user->name ?? 'Guest User' }}</h2>
+                        <p class="Jessica-number">{{ $user->email ?? 'Not Logged In' }}</p>
                     </div>
                 </div>
                 <div class="edit-icon-svg">

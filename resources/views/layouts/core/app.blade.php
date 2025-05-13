@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/media_query.css">
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+    @yield('styles') <!-- Optional if you want to manage styles separately -->
+
 </head>
 
 <body>
@@ -76,6 +80,8 @@
     <script src="assets/javascript/bootstrap.min.js"></script>
     <script src="assets/javascript/audio-song-play.js"></script>
     <script src="assets/javascript/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    @yield('scripts') <!-- Needed for custom page scripts -->
 </body>
 
 </html>
