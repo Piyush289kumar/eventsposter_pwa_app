@@ -14,6 +14,7 @@ class Frame extends Model
         'image_path',
         'status',
         'is_premium',
+        'user_id',
     ];
 
     protected $casts = [

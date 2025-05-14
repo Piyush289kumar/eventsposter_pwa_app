@@ -12,6 +12,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Models\User;
+
 
 class FrameResource extends Resource
 {
@@ -29,27 +31,41 @@ class FrameResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(255)
-                    ->columnSpanFull(),
+                // Left Column
+                Forms\Components\Group::make()
+                    ->schema([
+                        Forms\Components\TextInput::make('title')
+                            ->required()
+                            ->maxLength(255),
 
-                Forms\Components\FileUpload::make('image_path')
-                    ->label('Frame Image')
-                    ->image()
-                    ->required()
-                    ->directory('frames')
-                    ->visibility('public')
-                    ->columnSpanFull(),
+                        Forms\Components\Select::make('user_id')
+                            ->label('User')
+                            ->options(User::all()->pluck('name', 'id'))
+                            ->searchable()
+                            ->required()
+                            ->preload(),
 
-                Forms\Components\Toggle::make('status')
-                    ->label('Active')
-                    ->default(true)
-                    ->required(),
+                        Forms\Components\Toggle::make('status')
+                            ->label('Active')
+                            ->default(true)
+                            ->required(),
 
-                Forms\Components\Toggle::make('is_premium')
-                    ->label('Premium Frame')
-                    ->required(),
+                        Forms\Components\Toggle::make('is_premium')
+                            ->label('Premium Frame')
+                            ->required(),
+                    ]),
+
+                // Right Column
+                Forms\Components\Group::make()
+                    ->schema([
+                        Forms\Components\FileUpload::make('image_path')
+                            ->label('Frame Image')
+                            ->image()
+                            ->required()
+                            ->directory('frames')
+                            ->visibility('public'),
+                    ]),
+
             ]);
     }
 
@@ -123,8 +139,8 @@ class FrameResource extends Resource
     {
         return [
             'index' => Pages\ListFrames::route('/'),
-            'create' => Pages\CreateFrame::route('/create'),
-            'edit' => Pages\EditFrame::route('/{record}/edit'),
+            // 'create' => Pages\CreateFrame::route('/create'),
+            // 'edit' => Pages\EditFrame::route('/{record}/edit'),
         ];
     }
 
