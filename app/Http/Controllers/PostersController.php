@@ -11,8 +11,7 @@ class PostersController extends Controller
 {
     public function index()
     {
-        $backgrounds = Background::where('status', true)->orderBy('created_at', 'desc')->get();
-
+        $backgrounds = Background::where('status', true)->orderBy('created_at', 'desc')->paginate(8);
         $user_id = Auth::user()->id; // Get current logged-in user
         $frames = Frame::where('user_id', $user_id)->get();
 

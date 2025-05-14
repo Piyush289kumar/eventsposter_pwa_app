@@ -20,46 +20,78 @@
                 <div class="clear"></div>
             </div> --}}
             <div class="tabContainer">
-                <div id="one" class="Tabcondent kuean  tab-active">
-                    <div class="ai-voice-car-main">
-                        <div class="flg-main-like">
-                            <img class="flag" src="assets/images/home-screen/flag1.jpg" alt="flag1">
-                            <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                <div id="one" class="Tabcondent kueans tab-active" style="padding: 15px;">
+                    {{-- <div id="one" class="Tabcondent kuean tab-active"> --}}
+
+
+
+                    @foreach ($backgrounds as $background)
+                        <div class="ai-voice-car-main mb-3">
+                            <div class="flg-main-like">
+                                <img class="flag" src="assets/images/svg/crowen-sm.svg"alt="flag1"
+                                    style="background: #FFAA01; padding: 2px; border-radius: 50%; height: 24px; width: 24px;">
+                                {{-- <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                 viewBox="0 0 20 20" fill="none">
                                 <path
                                     d="M10.516 17.3413C10.2327 17.4413 9.76602 17.4413 9.48268 17.3413C7.06602 16.5163 1.66602 13.0747 1.66602 7.24134C1.66602 4.66634 3.74102 2.58301 6.29935 2.58301C7.81602 2.58301 9.15768 3.31634 9.99935 4.44967C10.841 3.31634 12.191 2.58301 13.6993 2.58301C16.2577 2.58301 18.3327 4.66634 18.3327 7.24134C18.3327 13.0747 12.9327 16.5163 10.516 17.3413Z"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <div class="PerAI-img-main">
-                            <div class="crowen-sm"><img src="assets/images/svg/crowen-sm.svg" alt="crowen-sm">
+                            </svg> --}}
                             </div>
-                            <img src="assets/images/home-screen/PerAI-img1.jpg" alt="PerAI-img1">
-                        </div>
-                        <p class="olivia-name">Olivia (F)</p>
-                        <p class="olivia-lagu">English</p>
-                        <div class="play-btn-selct-btn-main">
-                            <div class="play-btn">
-                                <img class="play-icon" src="assets/images/svg/play-btn.svg" alt="play-btn">
+                            <div class="PerAI-img-main">
+                                {{-- <div class="crowen-sm">
+                                <img src="assets/images/svg/crowen-sm.svg" alt="crowen-sm">
+                            </div> --}}
+
+
+                                <img src="{{ asset($background->image_path) }}" alt="PerAI-img1">
+
+
+
+
                             </div>
-                            <div class="button-main select">
-                                <a href="#" class="main-bg-color-btn">
-                                    <span class="music-graph">Select</span>
-                                    <div class="waveform-animation">
-                                        <span class="wave"></span>
-                                        <span class="wave"></span>
-                                        <span class="wave"></span>
-                                        <span class="wave"></span>
-                                        <span class="wave"></span>
-                                        <span class="wave"></span>
-                                        <span class="wave"></span>
-                                        <span class="wave"></span>
-                                    </div>
-                                </a>
+                            <p class="olivia-name">Olivia (F)</p>
+                            <p class="olivia-lagu">English</p>
+                            <div class="play-btn-selct-btn-main">
+                                <div class="play-btn">
+                                    <img class="play-icon" src="assets/images/svg/play-btn.svg" alt="play-btn">
+                                </div>
+                                <div class="button-main select">
+                                    <a href="#" class="main-bg-color-btn">
+                                        <span class="music-graph">Select</span>
+                                        <div class="waveform-animation">
+                                            <span class="wave"></span>
+                                            <span class="wave"></span>
+                                            <span class="wave"></span>
+                                            <span class="wave"></span>
+                                            <span class="wave"></span>
+                                            <span class="wave"></span>
+                                            <span class="wave"></span>
+                                            <span class="wave"></span>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
+                            <audio class="audio-player" src="assets/audio/music1.mp3"></audio>
                         </div>
-                        <audio class="audio-player" src="assets/audio/music1.mp3"></audio>
+                    @endforeach
+
+
+
+                    {{-- Pagination links --}}
+                    <div class="pagination-wrapper">
+                        {{ $backgrounds->links() }}
                     </div>
+
+
+
+
+
+
+
+
+
+
+
                     <div class="ai-voice-car-main">
                         <div class="flg-main-like">
                             <img class="flag" src="assets/images/home-screen/flag3.jpg" alt="flag3">
