@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Filament\Resources;
-
 use App\Filament\Resources\FrameResource\Pages;
 use App\Filament\Resources\FrameResource\RelationManagers;
 use App\Models\Frame;
@@ -13,20 +11,13 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Models\User;
-
-
 class FrameResource extends Resource
 {
     protected static ?string $model = Frame::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
     protected static ?string $modelLabel = 'Frame';
-
     protected static ?string $navigationLabel = 'Frames';
-
     protected static ?string $navigationGroup = 'Media';
-
     public static function form(Form $form): Form
     {
         return $form
@@ -37,24 +28,20 @@ class FrameResource extends Resource
                         Forms\Components\TextInput::make('title')
                             ->required()
                             ->maxLength(255),
-
                         Forms\Components\Select::make('user_id')
                             ->label('User')
                             ->options(User::all()->pluck('name', 'id'))
                             ->searchable()
                             ->required()
                             ->preload(),
-
                         Forms\Components\Toggle::make('status')
                             ->label('Active')
                             ->default(true)
                             ->required(),
-
                         Forms\Components\Toggle::make('is_premium')
                             ->label('Premium Frame')
                             ->required(),
                     ]),
-
                 // Right Column
                 Forms\Components\Group::make()
                     ->schema([
@@ -65,10 +52,8 @@ class FrameResource extends Resource
                             ->directory('frames')
                             ->visibility('public'),
                     ]),
-
             ]);
     }
-
     public static function table(Table $table): Table
     {
         return $table
@@ -76,24 +61,19 @@ class FrameResource extends Resource
                 Tables\Columns\ImageColumn::make('image_path')
                     ->label('Image')
                     ->disk('public'),
-
                 Tables\Columns\TextColumn::make('title')
                     ->searchable()
                     ->sortable(),
-
                 Tables\Columns\IconColumn::make('status')
                     ->label('Active')
                     ->boolean(),
-
                 Tables\Columns\IconColumn::make('is_premium')
                     ->label('Premium')
                     ->boolean(),
-
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
@@ -106,7 +86,6 @@ class FrameResource extends Resource
                         true => 'Active',
                         false => 'Inactive',
                     ]),
-
                 Tables\Filters\SelectFilter::make('is_premium')
                     ->options([
                         true => 'Premium',
@@ -127,14 +106,12 @@ class FrameResource extends Resource
                 ]),
             ]);
     }
-
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-
     public static function getPages(): array
     {
         return [
@@ -143,7 +120,6 @@ class FrameResource extends Resource
             // 'edit' => Pages\EditFrame::route('/{record}/edit'),
         ];
     }
-
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()

@@ -19,7 +19,7 @@
                 <a href="javascript:void(0);" data-tab="two" class="ongoing">Favorites Voices</a>
                 <div class="clear"></div>
             </div> --}}
-            <div class="tabContainer">
+            <div class="tabContainer mb-5 pb-5">
                 <div id="one" class="Tabcondent kueans tab-active" style="padding: 15px;">
                     {{-- <div id="one" class="Tabcondent kuean tab-active"> --}}
                     @foreach ($backgrounds as $background)
@@ -35,8 +35,14 @@
                                     style="position: absolute; bottom: 0; left: 0; width: 100%; height: auto;
                 border-radius: 3%; pointer-events: none; object-fit: cover;">
                             </div>
-                            <p class="olivia-name">{{ $background->title ?? 'Title' }}</p>
+                            <p class="olivia-name" style="border-top: 1px solid #6218FF; margin-top: 5px;">
+                                {{ $background->title ?? 'Title' }}</p>
                             <p class="olivia-lagu">{{ \Carbon\Carbon::parse($background->created_at)->format('d F Y') }}</p>
+
+                            <p class="olivia-name" id="time-left-{{ $background->id }}" style="color:#E83F25;">
+                                Time left to delete: calculating...
+                            </p>
+
                             <div class="play-btn-selct-btn-main">
                                 {{-- <div class="play-btn">
                                     <img class="play-icon" src="assets/images/svg/play-btn.svg" alt="play-btn"
@@ -56,9 +62,6 @@
                     <div class="pagination-wrapper w-full" style="display: flex; justify-content: center;">
                         {{ $backgrounds->links('pagination::bootstrap-4') }}
                     </div>
-
-
-
                     {{-- <div class="ai-voice-car-main">
                         <div class="flg-main-like">
                             <img class="flag" src="assets/images/home-screen/flag3.jpg" alt="flag3">
@@ -337,4 +340,39 @@
             setTimeout(() => toast.remove(), 300);
         }, 3000);
     }
+</script>
+
+<script>
+    function getTimeLeftToDelete(id, createdAt) {
+        const element = document.getElementById('time-left-' + id);
+
+        function updateTime() {
+            const created = new Date(createdAt);
+            const expiry = new Date(created.getTime() + 3 * 24 * 60 * 60 * 1000); // +3 days
+            const now = new Date();
+
+            const diff = expiry - now;
+
+            if (diff <= 0) {
+                element.innerText = "Image expired. Will be deleted.";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            element.innerText = `Time left to delete: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        @foreach ($backgrounds as $background)
+            getTimeLeftToDelete({{ $background->id }}, '{{ $background->created_at }}');
+        @endforeach
+    });
 </script>
