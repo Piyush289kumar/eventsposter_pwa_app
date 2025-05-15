@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostersController;
 use App\Http\Controllers\ProfileController;
@@ -18,9 +19,12 @@ Route::middleware([
     })->name('dashboard');
 
 
-    Route::get('/', function () {
-        return view('layouts.core.pages.home');
-    })->name('home');
+    // Route::get('/', function () {
+    //     return view('layouts.core.pages.home');
+    // })->name('home');
+
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
     Route::get('/about-us', [PageController::class, 'about'])->name('about');
     Route::get('/logoutcore', [PageController::class, 'logout'])->name('logoutcore');

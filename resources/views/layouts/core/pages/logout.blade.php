@@ -12,19 +12,19 @@
     <!-- ====================================== Logout Screen Start ===================================== -->
     <section class="section-main mb-3 mt-3">
         <div class="vector-images-box">
-            <img src="assets/images/vector-images/img9.png" alt="img9">
+            <img src="assets/images/vector-images/img9.png" alt="img9" style="height: 200px;">
         </div>
         <h2 class="contact-us-text-main">Logout</h2>
-        <p class="ace">Are you sure you want to log out?</p>
+        <p class="ace">Are you sure you want to log out?</p>        
+        <div class="button-main splash-btns-bottoms" style="display: flex; gap: 10px; margin-top: 20px;">
+            <a href="{{ route('home') }}" class="skip-btn">No</a>
 
+            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                style="width: 100%; padding: 12px; text-align: center; font-weight: 700;" class="main-bg-color-btn logout">
+                @csrf
+                <button type="submit" class="main-bg-color-btn logout">Yes, Logout</button>
+            </form>
+
+        </div>
     </section>
-    <div class="button-main splash-btns-bottom">
-        <a href="{{ route('home') }}" class="skip-btn">No</a>
-
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="width: 100%; padding: 12px; text-align: center; font-weight: 700;" class="main-bg-color-btn logout">
-            @csrf
-            <button type="submit" class="main-bg-color-btn logout">Yes, Logout</button>
-        </form>
-
-    </div>
 @endsection

@@ -106,7 +106,10 @@ class BackgroundResource extends Resource
                     ->label('Only Premium'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\RestoreAction::make(),
+                Tables\Actions\ForceDeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

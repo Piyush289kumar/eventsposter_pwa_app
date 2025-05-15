@@ -4,7 +4,6 @@
         .grayscale-img {
             filter: grayscale(100%);
         }
-
         .disabled-link {
             pointer-events: none;
             opacity: 0.6;
@@ -16,24 +15,24 @@
     <section class="section-main section-main-ver">
         <h2 class="d-none">hidden</h2>
         <div class="language-select">
-            <div class="filter2-mian">
+            {{-- <div class="filter2-mian">
                 <div class="sign-input-main" id="seracg">
                     <div class="media-icons-lets">
                         <img src="assets/images/svg/search.svg" alt="search">
                     </div>
                     <input type="text" id="name" placeholder="Search" name="name" autocomplete="off">
                 </div>
-                {{-- <a href="filter.html" class="filter1-main-box">
+                <a href="filter.html" class="filter1-main-box">
                     <img src="assets/images/svg/filter2.svg" alt="filter2">
-                </a> --}}
-            </div>
+                </a>
+            </div> --}}
             {{-- <div class="tab-btn-main mt-0" id="ongoing">
                 <a href="javascript:void(0);" data-tab="one" class="ongoing tab-active">All AI Voices</a>
                 <a href="javascript:void(0);" data-tab="two" class="ongoing">Favorites Voices</a>
                 <div class="clear"></div>
             </div> --}}
             <div class="tabContainer mb-5 pb-5">
-                <div id="one" class="Tabcondent kueans tab-active" style="padding: 15px;">
+                <div id="one" class="Tabcondent kueans tab-active" style="padding: 1px;">
                     {{-- <div id="one" class="Tabcondent kuean tab-active"> --}}
                     @foreach ($backgrounds as $background)
                         <div class="ai-voice-car-main mb-3" style="overflow: hidden;">
@@ -51,11 +50,9 @@
                             <p class="olivia-name" style="border-top: 1px solid #6218FF; margin-top: 5px;">
                                 {{ $background->title ?? 'Title' }}</p>
                             <p class="olivia-lagu">{{ \Carbon\Carbon::parse($background->event_date)->format('d F Y') }}</p>
-
                             <p class="olivia-name" id="time-left-{{ $background->id }}" style="color:#E83F25;">
                                 Time left to delete: calculating...
                             </p>
-
                             <div class="play-btn-selct-btn-main">
                                 {{-- <div class="play-btn">
                                     <img class="play-icon" src="assets/images/svg/play-btn.svg" alt="play-btn"
@@ -300,7 +297,6 @@
             }, 'image/png');
         });
     }
-
     function downloadImage(elementId) {
         const element = document.getElementById(elementId);
         html2canvas(element).then(canvas => {
@@ -312,7 +308,6 @@
             showToast('📥 Image downloaded successfully!');
         });
     }
-
     function downloadBlob(blob, filename) {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -323,7 +318,6 @@
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
     }
-
     function showToast(message) {
         const existing = document.getElementById('custom-toast');
         if (existing) existing.remove(); // Remove previous toast if any
@@ -354,48 +348,37 @@
         }, 3000);
     }
 </script>
-
 <script>
     function getTimeLeftToDelete(id, createdAt) {
         const element = document.getElementById('time-left-' + id);
         const container = document.getElementById('capture-' + id);
         const downloadBtn = container.closest('.ai-voice-car-main').querySelector('.main-bg-color-btn');
         const images = container.querySelectorAll('img'); // both background and frame images
-
         function updateTime() {
             const created = new Date(createdAt);
             const expiry = new Date(created.getTime() + 3 * 24 * 60 * 60 * 1000); // +3 days
             const now = new Date();
-
             const diff = expiry - now;
-
             if (diff <= 0) {
                 element.innerText = "Image Expired.";
-
                 // Disable download button
                 downloadBtn.classList.add('disabled-link');
                 downloadBtn.removeAttribute('onclick');
-
                 // Apply grayscale to both images
                 images.forEach(img => {
                     img.classList.add('grayscale-img');
                 });
-
                 return;
             }
-
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
             element.innerText = `Time left to delete: ${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
-
         updateTime();
         setInterval(updateTime, 1000);
     }
-
     document.addEventListener('DOMContentLoaded', function() {
         @foreach ($backgrounds as $background)
             getTimeLeftToDelete({{ $background->id }}, '{{ $background->event_date }}');
