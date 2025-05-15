@@ -4,6 +4,7 @@
         .grayscale-img {
             filter: grayscale(100%);
         }
+
         .disabled-link {
             pointer-events: none;
             opacity: 0.6;
@@ -297,17 +298,36 @@
             }, 'image/png');
         });
     }
+    // function downloadImage(elementId) {
+    //     const element = document.getElementById(elementId);
+    //     html2canvas(element).then(canvas => {
+    //         const dataUrl = canvas.toDataURL('image/png');
+    //         const link = document.createElement('a');
+    //         link.download = 'downloaded-image.png';
+    //         link.href = dataUrl;
+    //         link.click();
+    //         showToast('📥 Image downloaded successfully!');
+    //     });
+    // }
+
     function downloadImage(elementId) {
         const element = document.getElementById(elementId);
         html2canvas(element).then(canvas => {
             const dataUrl = canvas.toDataURL('image/png');
-            const link = document.createElement('a');
-            link.download = 'downloaded-image.png';
-            link.href = dataUrl;
-            link.click();
-            showToast('📥 Image downloaded successfully!');
+
+            // Check if inside React Native WebView
+            if (window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+                window.ReactNativeWebView.postMessage(dataUrl); // send base64 to app
+            } else {
+                const link = document.createElement('a');
+                link.download = 'downloaded-image.png';
+                link.href = dataUrl;
+                link.click();
+                showToast('📥 Image downloaded successfully!');
+            }
         });
     }
+
     function downloadBlob(blob, filename) {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -318,6 +338,7 @@
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
     }
+
     function showToast(message) {
         const existing = document.getElementById('custom-toast');
         if (existing) existing.remove(); // Remove previous toast if any
