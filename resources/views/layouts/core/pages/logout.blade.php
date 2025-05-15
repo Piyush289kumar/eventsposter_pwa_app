@@ -19,7 +19,12 @@
 
     </section>
     <div class="button-main splash-btns-bottom">
-        <a href="logout.html" class="skip-btn">No</a>
-        <a href="splash.html" class="main-bg-color-btn logout">Yes, Logout</a>
+        <a href="{{ route('home') }}" class="skip-btn">No</a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="width: 100%; padding: 12px; text-align: center; font-weight: 700;" class="main-bg-color-btn logout">
+            @csrf
+            <button type="submit" class="main-bg-color-btn logout">Yes, Logout</button>
+        </form>
+
     </div>
 @endsection

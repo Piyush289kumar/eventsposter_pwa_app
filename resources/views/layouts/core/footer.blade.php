@@ -1,4 +1,4 @@
-<div class="nav">
+<div class="nav" style="z-index: 9999999">
     {{-- <a href="{{route('home')}}" class="nav-item active"> --}}
     <a href="{{ route('home') }}" class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}">
         <svg class="material-icons home-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
