@@ -31,6 +31,12 @@ class BackgroundResource extends Resource
                                             ->required()
                                             ->maxLength(255)
                                             ->columnSpanFull(),
+
+                                        Forms\Components\DateTimePicker::make('event_date')
+                                            ->required()
+                                            ->columnSpanFull(),
+
+
                                         Forms\Components\Toggle::make('status')
                                             ->label('Active')
                                             ->default(true)
@@ -67,6 +73,10 @@ class BackgroundResource extends Resource
                     ->disk('public')
                     ->height(60),
                 Tables\Columns\TextColumn::make('title')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('event_date')
+                    ->date('d F Y h:m') // Format: 12 May 2025
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\IconColumn::make('status')

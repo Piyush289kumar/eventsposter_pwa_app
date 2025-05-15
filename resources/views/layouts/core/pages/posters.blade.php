@@ -1,4 +1,17 @@
 @extends('layouts.core.app')
+@section('styles')
+    <style>
+        .grayscale-img {
+            filter: grayscale(100%);
+        }
+
+        .disabled-link {
+            pointer-events: none;
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    </style>
+@endsection
 @section('content')
     <section class="section-main section-main-ver">
         <h2 class="d-none">hidden</h2>
@@ -37,7 +50,7 @@
                             </div>
                             <p class="olivia-name" style="border-top: 1px solid #6218FF; margin-top: 5px;">
                                 {{ $background->title ?? 'Title' }}</p>
-                            <p class="olivia-lagu">{{ \Carbon\Carbon::parse($background->created_at)->format('d F Y') }}</p>
+                            <p class="olivia-lagu">{{ \Carbon\Carbon::parse($background->event_date)->format('d F Y') }}</p>
 
                             <p class="olivia-name" id="time-left-{{ $background->id }}" style="color:#E83F25;">
                                 Time left to delete: calculating...
@@ -345,6 +358,9 @@
 <script>
     function getTimeLeftToDelete(id, createdAt) {
         const element = document.getElementById('time-left-' + id);
+        const container = document.getElementById('capture-' + id);
+        const downloadBtn = container.closest('.ai-voice-car-main').querySelector('.main-bg-color-btn');
+        const images = container.querySelectorAll('img'); // both background and frame images
 
         function updateTime() {
             const created = new Date(createdAt);
@@ -354,7 +370,17 @@
             const diff = expiry - now;
 
             if (diff <= 0) {
-                element.innerText = "Image expired. Will be deleted.";
+                element.innerText = "Image Expired.";
+
+                // Disable download button
+                downloadBtn.classList.add('disabled-link');
+                downloadBtn.removeAttribute('onclick');
+
+                // Apply grayscale to both images
+                images.forEach(img => {
+                    img.classList.add('grayscale-img');
+                });
+
                 return;
             }
 
@@ -372,7 +398,7 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         @foreach ($backgrounds as $background)
-            getTimeLeftToDelete({{ $background->id }}, '{{ $background->created_at }}');
+            getTimeLeftToDelete({{ $background->id }}, '{{ $background->event_date }}');
         @endforeach
     });
 </script>

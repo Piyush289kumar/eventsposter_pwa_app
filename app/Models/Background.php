@@ -12,6 +12,7 @@ class Background extends Model
     protected $fillable = [
         'title',
         'image_path',
+        'event_date',
         'status',
         'is_premium'
     ];
