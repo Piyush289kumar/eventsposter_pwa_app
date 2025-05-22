@@ -96,6 +96,8 @@ class BackgroundResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            // Add these two lines for default sorting
+            ->defaultSort('event_date', 'desc')
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
                 Tables\Filters\Filter::make('active')
@@ -106,7 +108,7 @@ class BackgroundResource extends Resource
                     ->label('Only Premium'),
             ])
             ->actions([
-                 Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
                 Tables\Actions\RestoreAction::make(),
                 Tables\Actions\ForceDeleteAction::make(),
