@@ -38,5 +38,7 @@ Route::middleware([
     
     Route::get('/feedback', [FeedbackController::class, 'index'])->name('feedback');
     Route::get('/posters', [PostersController::class, 'index'])->name('posters');
+    Route::get('/download-poster/{id}', [PostersController::class, 'downloadCombinedImage'])->name('download.combined.poster');    
+
 
 });

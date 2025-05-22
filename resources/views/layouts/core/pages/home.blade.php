@@ -31,9 +31,9 @@
                 <div class="tran-icons">
                     <img src="assets/images/svg/message.svg" alt="message">
                 </div>
-                  <h2 class="speechAi">Online Marketing</h2>
+                <h2 class="speechAi">Online Marketing</h2>
                 <p class="stunni">Boost your digital presence and connect with your audience.</p>
-              
+
                 <div class="button-main start-btn">
                     <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
                         aria-controls="offcanvasBottom" class="main-bg-color-btn">₹ 3499/- </a>
@@ -43,7 +43,7 @@
                 <div class="tran-icons">
                     <img src="assets/images/svg/translate.svg" alt="translate">
                 </div>
-                  <h2 class="speechAi">Launch Your Website Today</h2>
+                <h2 class="speechAi">Launch Your Website Today</h2>
                 <p class="stunni">Transform your vision into a live digital presence.</p>
                 <div class="button-main start-btn">
                     <a href="aiVoiceTranslate.html" class="main-bg-color-btn">₹ 4999/-</a>
@@ -90,11 +90,19 @@
                                         onclick="shareImage('capture-{{ $background->id }}')" style="cursor: pointer;">
                                 </div> --}}
                         <div class="button-main select">
-                            <a href="#" class="main-bg-color-btn"
-                                onclick="shareImage('capture-{{ $background->id }}')" style="cursor: pointer;">
-                                {{-- onclick="downloadImage('capture-{{ $background->id }}')"> --}}
+                            {{-- <a href="#" class="main-bg-color-btn"
+                                        onclick="shareImage('capture-{{ $background->id }}')" style="cursor: pointer;">
+                                        {{-- onclick="downloadImage('capture-{{ $background->id }}')"> -
+                                        <span class="music-graph">Download</span>
+                                    </a> --}}
+
+
+
+                            <a href="{{ route('download.combined.poster', $background->id) }}" class="main-bg-color-btn">
                                 <span class="music-graph">Download</span>
                             </a>
+
+
                         </div>
                     </div>
                 </div>
