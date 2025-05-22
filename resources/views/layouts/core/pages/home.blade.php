@@ -1,5 +1,17 @@
 @extends('layouts.core.app')
+@section('styles')
+    <style>
+        .grayscale-img {
+            filter: grayscale(100%);
+        }
 
+        .disabled-link {
+            pointer-events: none;
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    </style>
+@endsection
 @section('content')
     <section class="section-main section-main-ver-home">
         <div class="upgradePro-main-pro">
@@ -19,26 +31,27 @@
                 <div class="tran-icons">
                     <img src="assets/images/svg/message.svg" alt="message">
                 </div>
-                <h2 class="speechAi">AI Text to Speech</h2>
-                <p class="stunni">Convert text into stunning and accurate speech...</p>
+                  <h2 class="speechAi">Online Marketing</h2>
+                <p class="stunni">Boost your digital presence and connect with your audience.</p>
+              
                 <div class="button-main start-btn">
                     <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
-                        aria-controls="offcanvasBottom" class="main-bg-color-btn">Start</a>
+                        aria-controls="offcanvasBottom" class="main-bg-color-btn">₹ 3499/- </a>
                 </div>
             </div>
             <div class="trasnsBox voice-trans">
                 <div class="tran-icons">
                     <img src="assets/images/svg/translate.svg" alt="translate">
                 </div>
-                <h2 class="speechAi">AI Voice Translate</h2>
-                <p class="stunni">Translate your voice into another language...</p>
+                  <h2 class="speechAi">Launch Your Website Today</h2>
+                <p class="stunni">Transform your vision into a live digital presence.</p>
                 <div class="button-main start-btn">
-                    <a href="aiVoiceTranslate.html" class="main-bg-color-btn">Start</a>
+                    <a href="aiVoiceTranslate.html" class="main-bg-color-btn">₹ 4999/-</a>
                 </div>
             </div>
         </div>
         <div class="exploAI">
-            <p>Explore AI Voices</p>
+            <p>Explore Posters</p>
             <a href="{{ route('posters') }}">
                 <span>View all</span>
                 <img src="assets/images/svg/viewallArrow.svg" alt="viewallArrow">
@@ -64,7 +77,8 @@
                             style="position: absolute; bottom: 0; left: 0; width: 100%; height: auto;
                 border-radius: 3%; pointer-events: none; object-fit: cover;">
                     </div>
-                    <p class="olivia-name" style="border-top: 1px solid #6218FF; margin-top: 5px; height: 40px; overflow: auto; padding-top: 5px;">
+                    <p class="olivia-name"
+                        style="border-top: 1px solid #6218FF; margin-top: 5px; height: 40px; overflow: auto; padding-top: 5px;">
                         {{ $background->title ?? 'Title' }}</p>
                     <p class="olivia-lagu">{{ \Carbon\Carbon::parse($background->event_date)->format('d F Y') }}</p>
                     <p class="olivia-name" id="time-left-{{ $background->id }}" style="color:#E83F25;">
@@ -279,11 +293,12 @@
         <br>
         <br>
         <br>
-        <br>      
+        <br>
 
 
     </section>
 @endsection
+
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script>
     function shareImage(elementId) {
@@ -316,18 +331,36 @@
             }, 'image/png');
         });
     }
+    // function downloadImage(elementId) {
+    //     const element = document.getElementById(elementId);
+    //     html2canvas(element).then(canvas => {
+    //         const dataUrl = canvas.toDataURL('image/png');
+    //         const link = document.createElement('a');
+    //         link.download = 'downloaded-image.png';
+    //         link.href = dataUrl;
+    //         link.click();
+    //         showToast('📥 Image downloaded successfully!');
+    //     });
+    // }
 
     function downloadImage(elementId) {
         const element = document.getElementById(elementId);
         html2canvas(element).then(canvas => {
             const dataUrl = canvas.toDataURL('image/png');
-            const link = document.createElement('a');
-            link.download = 'downloaded-image.png';
-            link.href = dataUrl;
-            link.click();
-            showToast('📥 Image downloaded successfully!');
+
+            if (window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+                window.ReactNativeWebView.postMessage(dataUrl); // Send base64 image string to React Native
+            } else {
+                // Normal web fallback: download
+                const link = document.createElement('a');
+                link.download = 'downloaded-image.png';
+                link.href = dataUrl;
+                link.click();
+                showToast('📥 Image downloaded successfully!');
+            }
         });
     }
+
 
     function downloadBlob(blob, filename) {
         const url = URL.createObjectURL(blob);
@@ -396,7 +429,7 @@
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            element.innerHTML = `Time left to Expire:<br>${days}d ${hours}h ${minutes}m ${seconds}s`;
+            element.innerText = `Time left to delete: ${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
         updateTime();
         setInterval(updateTime, 1000);
