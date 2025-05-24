@@ -19,11 +19,35 @@ class PostersController extends Controller
 {
     public function index()
     {
-        $backgrounds = Background::where('status', true)->orderBy('created_at', 'desc')->paginate(6);
         $user_id = Auth::user()->id; // Get current logged-in user
         $frame = Frame::where('user_id', $user_id)->first();
+        $today = now()->format('Y-m-d');      // Today's date (e.g., 2025-05-23)
+        $tomorrow = now()->addDay()->format('Y-m-d');  // Tomorrow (2025-05-24)
 
-        return view('layouts.core.pages.posters', compact('backgrounds', 'frame'));
+        // Fetch backgrounds where event_date matches today
+        $todayBackgrounds = Background::where('status', true)
+            ->whereDate('event_date', $today)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        // Fetch backgrounds where event_date matches yesterday
+        $tomorrowBackgrounds = Background::where('status', true)
+            ->whereDate('event_date', $tomorrow)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        // 3. REST of the Posters (EXCLUDING today & tomorrow)
+        $restBackgrounds = Background::where('status', true)
+            ->whereDate('event_date', '<', $today)  // Strictly before today
+            ->orderBy('created_at', 'desc')
+            ->paginate(6);
+
+        return view('layouts.core.pages.posters', [
+            'todayBackgrounds' => $todayBackgrounds,
+            'tomorrowBackgrounds' => $tomorrowBackgrounds,
+            'restBackgrounds' => $restBackgrounds,
+            'frame' => $frame
+        ]);
     }
 
 
