@@ -65,7 +65,7 @@ class PostersController extends Controller
         $manager = new ImageManager(new GdDriver());
 
         $bgImage = $manager->read($backgroundPath);
-        $frameImage = $manager->read($framePath)->resize(width: $bgImage->width(), height: 200);
+        $frameImage = $manager->read($framePath)->resize(width: $bgImage->width(), height: $bgImage->height());
         $bgImage->place($frameImage, 'bottom');
 
 
