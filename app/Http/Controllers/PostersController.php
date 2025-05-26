@@ -48,6 +48,7 @@ class PostersController extends Controller
             'restBackgrounds' => $restBackgrounds,
             'frame' => $frame
         ]);
+        
     }
 
 
