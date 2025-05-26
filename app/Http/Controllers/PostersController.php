@@ -19,26 +19,31 @@ class PostersController extends Controller
 {
     public function index()
     {
-        $user_id = Auth::user()->id; // Get current logged-in user
-        $frame = Frame::where('user_id', $user_id)->first();
-        $today = now()->format('Y-m-d');      // Today's date (e.g., 2025-05-23)
-        $tomorrow = now()->addDay()->format('Y-m-d');  // Tomorrow (2025-05-24)
+        $user = Auth::user(); // Get logged-in user
+        $userCategoryId = $user->user_category_id;
 
-        // Fetch backgrounds where event_date matches today
+        $frame = Frame::where('user_id', $user->id)->first();
+        $today = now()->format('Y-m-d');
+        $tomorrow = now()->addDay()->format('Y-m-d');
+
+        // Filter today's backgrounds by user_category_id
         $todayBackgrounds = Background::where('status', true)
+            ->where('user_category_id', $userCategoryId)
             ->whereDate('event_date', $today)
             ->orderBy('created_at', 'desc')
             ->get();
 
-        // Fetch backgrounds where event_date matches yesterday
+        // Filter tomorrow's backgrounds
         $tomorrowBackgrounds = Background::where('status', true)
+            ->where('user_category_id', $userCategoryId)
             ->whereDate('event_date', $tomorrow)
             ->orderBy('created_at', 'desc')
             ->get();
 
-        // 3. REST of the Posters (EXCLUDING today & tomorrow)
+        // Filter rest backgrounds (before today)
         $restBackgrounds = Background::where('status', true)
-            ->whereDate('event_date', '<', $today)  // Strictly before today
+            ->where('user_category_id', $userCategoryId)
+            ->whereDate('event_date', '<', $today)
             ->orderBy('created_at', 'desc')
             ->paginate(6);
 
@@ -48,8 +53,8 @@ class PostersController extends Controller
             'restBackgrounds' => $restBackgrounds,
             'frame' => $frame
         ]);
-
     }
+
 
     public function downloadCombinedImage($backgroundId)
     {

@@ -12,10 +12,17 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $backgrounds = Background::where('status', true)->orderBy('created_at', 'desc')->paginate(2);
-        $user_id = Auth::user()->id; // Get current logged-in user
-        $frame = Frame::where('user_id', $user_id)->first();
+        $user = Auth::user(); // Get current logged-in user
+        $userCategoryId = $user->user_category_id;
+
+        $backgrounds = Background::where('status', true)
+            ->where('user_category_id', $userCategoryId) // Filter by category
+            ->orderBy('created_at', 'desc')
+            ->paginate(2);
+
+        $frame = Frame::where('user_id', $user->id)->first();
 
         return view('layouts.core.pages.home', compact('backgrounds', 'frame'));
     }
+
 }

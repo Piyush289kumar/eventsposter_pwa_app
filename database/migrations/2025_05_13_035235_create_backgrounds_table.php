@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('image_path');
             $table->boolean('status')->default(true);
             $table->boolean('is_premium')->default(false);
+            $table->foreignId('user_category_id')->nullable()->constrained('user_categories')->nullOnDelete();
             $table->softDeletes();
             $table->timestamps();
         });
