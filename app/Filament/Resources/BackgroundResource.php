@@ -53,7 +53,7 @@ class BackgroundResource extends Resource
                                             ->required(),
 
 
-                                        Forms\Components\RichEditor::make('caption')
+                                        Forms\Components\Textarea::make('caption')
                                             ->label('Caption')
                                             ->required()
                                             ->columnSpanFull(),
