@@ -51,10 +51,10 @@
                                     <div class="button-main select" style="width: 35%;">
                                         <button type="button" class="main-bg-color-btn bg-black copy-caption-btn p-2" style=" width: 100%;"
                                             data-caption="{{ $background->caption }}">
-                                            <span class="music-graph" style="font-weight: 700; width: 100%;">📄 Copy Caption</span>
+                                            <span class="music-graph" style="font-weight: 700; width: 100%;">📄 Caption</span>
                                         </button>
                                     </div>
-                                    <div class="button-main select">
+                                    <div class="button-main select" style="width: 65%;">
                                         <a href="{{ route('download.combined.poster', $background->id) }}"
                                             class="main-bg-color-btn">
                                             <span class="music-graph">Download</span>
@@ -104,10 +104,10 @@
                                     <div class="button-main select" style="width: 35%;">
                                         <button type="button" class="main-bg-color-btn bg-black copy-caption-btn p-2" style=" width: 100%;"
                                             data-caption="{{ $background->caption }}">
-                                            <span class="music-graph" style="font-weight: 700; width: 100%;">📄 Copy Caption</span>
+                                            <span class="music-graph" style="font-weight: 700; width: 100%;">📄 Caption</span>
                                         </button>
                                     </div>
-                                    <div class="button-main select">
+                                    <div class="button-main select" style="width: 65%;">
                                         <a href="{{ route('download.combined.poster', $background->id) }}"
                                             class="main-bg-color-btn">
                                             <span class="music-graph">Download</span>
@@ -154,10 +154,10 @@
                                 <div class="button-main select" style="width: 35%;">
                                         <button type="button" class="main-bg-color-btn bg-black copy-caption-btn p-2" style=" width: 100%;"
                                             data-caption="{{ $background->caption }}">
-                                            <span class="music-graph" style="font-weight: 700; width: 100%;">📄 Copy Caption</span>
+                                            <span class="music-graph" style="font-weight: 700; width: 100%;">📄 Caption</span>
                                         </button>
                                     </div>
-                                <div class="button-main select">
+                                <div class="button-main select" style="width: 65%;">
                                     <a href="{{ route('download.combined.poster', $background->id) }}"
                                         class="main-bg-color-btn">
                                         <span class="music-graph">Download</span>
