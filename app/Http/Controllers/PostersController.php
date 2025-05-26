@@ -48,10 +48,8 @@ class PostersController extends Controller
             'restBackgrounds' => $restBackgrounds,
             'frame' => $frame
         ]);
-        
+
     }
-
-
 
     public function downloadCombinedImage($backgroundId)
     {
