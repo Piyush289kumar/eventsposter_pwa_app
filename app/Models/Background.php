@@ -15,7 +15,8 @@ class Background extends Model
         'event_date',
         'status',
         'is_premium',
-        'user_category_id'
+        'user_category_id',
+        'caption'
     ];
 
     protected $casts = [

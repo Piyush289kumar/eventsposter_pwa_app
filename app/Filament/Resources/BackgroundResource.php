@@ -51,6 +51,14 @@ class BackgroundResource extends Resource
                                         Forms\Components\Toggle::make('is_premium')
                                             ->label('Premium Background')
                                             ->required(),
+
+
+                                        Forms\Components\RichEditor::make('caption')
+                                            ->label('Caption')
+                                            ->required()
+                                            ->columnSpanFull(),
+
+
                                     ])->columnSpanFull(),
 
                             ]),
