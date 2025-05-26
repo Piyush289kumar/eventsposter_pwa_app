@@ -23,7 +23,8 @@
                 <p class="njoy">Enjoy all benefits without any restrictions.</p>
             </div>
             <div class="heek">
-                <a href="upgradePlan.html" class="upgradeNowButton">Upgrade Now</a>
+                <a href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20in%20upgrading%20to%20the%20Premium%20Tier.%20Please%20share%20details%20and%20pricing."
+                    class="upgradeNowButton">Upgrade Now</a>
             </div>
         </div>
         <div class="trasnsBox-main">
@@ -35,7 +36,8 @@
                 <p class="stunni">Boost your digital presence and connect with your audience.</p>
 
                 <div class="button-main start-btn">
-                    <a href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20in%20Online%20Marketing%20services.%20Please%20share%20more%20details.%20%0ABoost%20your%20digital%20presence%20and%20connect%20with%20your%20audience." class="main-bg-color-btn">₹ 3499/- </a>
+                    <a href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20in%20Online%20Marketing%20services.%20Please%20share%20more%20details.%20%0ABoost%20your%20digital%20presence%20and%20connect%20with%20your%20audience."
+                        class="main-bg-color-btn">₹ 3499/- </a>
                 </div>
             </div>
             <div class="trasnsBox voice-trans">
@@ -45,7 +47,8 @@
                 <h2 class="speechAi">Launch Your Website Today</h2>
                 <p class="stunni">Transform your vision into a live digital presence.</p>
                 <div class="button-main start-btn">
-                    <a href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20in%20the%20%E2%82%B9%204999%2F-%20Website%20Package.%20Please%20share%20more%20details%20about%20%22Launch%20Your%20Website%20Today%22%20-%20Transform%20your%20vision%20into%20a%20live%20digital%20presence." class="main-bg-color-btn">₹ 4999/-</a>
+                    <a href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20in%20the%20%E2%82%B9%204999%2F-%20Website%20Package.%20Please%20share%20more%20details%20about%20%22Launch%20Your%20Website%20Today%22%20-%20Transform%20your%20vision%20into%20a%20live%20digital%20presence."
+                        class="main-bg-color-btn">₹ 4999/-</a>
                 </div>
             </div>
         </div>

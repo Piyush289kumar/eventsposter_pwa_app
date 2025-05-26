@@ -6,7 +6,8 @@
             <div class="account-profile-main ">
                 <div class="account-profile-main-sub">
                     <img class="account-img"
-                        src="{{ $user->profile_photo_path ? asset('storage/' . $user->profile_photo_path) : asset('assets/images/account-profile/account-img.jpg') }}" alt="account-img" style="height: 80px;">
+                        src="{{ $user->profile_photo_path ? asset('storage/' . $user->profile_photo_path) : asset('assets/images/account-profile/account-img.jpg') }}"
+                        alt="account-img" style="height: 80px;">
                     <div>
                         <h2 class="Jessica">{{ $user->name ?? 'Guest User' }}</h2>
                         <p class="Jessica-number">{{ $user->email ?? 'Not Logged In' }}</p>
@@ -26,7 +27,8 @@
                 <p class="njoy">Enjoy all benefits without any restrictions.</p>
             </div>
             <div class="heek">
-                <a href="upgradePlan.html" class="upgradeNowButton">Upgrade Now</a>
+                <a href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20in%20upgrading%20to%20the%20Premium%20Tier.%20Please%20share%20details%20and%20pricing."
+                    class="upgradeNowButton">Upgrade Now</a>
             </div>
         </div>
         <a href="billingSubscriptions.html" class="home-setting-icons-main">
