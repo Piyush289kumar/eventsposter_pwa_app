@@ -71,13 +71,13 @@
                       <div class="setting-icons-main">
                           <img src="assets/images/svg/aboutVoice.svg" alt="aboutVoice">
                       </div>
-                      <h2 class="new-notification">About WEvoice</h2>
+                      <h2 class="new-notification">About Khyati Digi Ad</h2>
                   </div>
                   <p class="version">v1.0.1</p>
                   <img class="setting-arrow" src="assets/images/svg/right-half-arrow-black.svg"
                       alt="right-half-arrow-black">
               </a>
-              <a href="{{ route('feedback') }}" class="home-setting-icons-main">
+              {{-- <a href="{{ route('feedback') }}" class="home-setting-icons-main">
                   <div class="setting-opestion-main">
                       <div class="setting-icons-main">
                           <img src="assets/images/svg/feedback-icon.svg" alt="feedback-icon">
@@ -86,7 +86,7 @@
                   </div>
                   <img class="setting-arrow" src="assets/images/svg/right-half-arrow-black.svg"
                       alt="right-half-arrow-black">
-              </a>
+              </a> --}}
               <a href="{{ route('contact') }}" class="home-setting-icons-main">
                   <div class="setting-opestion-main">
                       <div class="setting-icons-main">
@@ -97,7 +97,7 @@
                   <img class="setting-arrow" src="assets/images/svg/right-half-arrow-black.svg"
                       alt="right-half-arrow-black">
               </a>
-              <a href="{{ route('invite') }}" class="home-setting-icons-main">
+              {{-- <a href="{{ route('invite') }}" class="home-setting-icons-main">
                   <div class="setting-opestion-main">
                       <div class="setting-icons-main">
                           <img src="assets/images/svg/inviteFriend-icon.svg" alt="inviteFriend-icon">
@@ -106,7 +106,7 @@
                   </div>
                   <img class="setting-arrow" src="assets/images/svg/right-half-arrow-black.svg"
                       alt="right-half-arrow-black">
-              </a>
+              </a> --}}
               {{-- <a href="deleteDeactivate.html" class="home-setting-icons-main">
                         <div class="setting-opestion-main">
                             <div class="setting-icons-main setting-icons-main2">
