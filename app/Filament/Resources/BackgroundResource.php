@@ -59,6 +59,7 @@ class BackgroundResource extends Resource
                                     ->visibility('public')
                                     ->imagePreviewHeight('250')
                                     ->columnSpanFull()
+                                    ->imageEditor()
                                     ->helperText('Recommended size: 640 x 680px. Max file size: 2MB.'),
                             ]),
                     ]),

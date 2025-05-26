@@ -32,6 +32,7 @@ class User extends Authenticatable
         'password',
         'role',
         'profile_photo_path',
+        'user_category_id',
     ];
 
     /**
@@ -67,4 +68,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // app/Models/User.php
+    public function category()
+    {
+        return $this->belongsTo(UserCategory::class, 'user_category_id');
+    }
+
+
 }

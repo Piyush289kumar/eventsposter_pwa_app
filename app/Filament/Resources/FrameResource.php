@@ -51,6 +51,7 @@ class FrameResource extends Resource
                             ->required()
                             ->directory('frames')
                             ->visibility('public')
+                            ->imageEditor()
                             ->helperText('Recommended size: 640 x 680px. Max file size: 2MB.'),
                     ]),
             ]);

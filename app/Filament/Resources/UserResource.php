@@ -6,9 +6,11 @@ use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -51,12 +53,12 @@ class UserResource extends Resource
                             ])
                             ->required(),
 
-                        // Forms\Components\FileUpload::make('profile_photo_path')
-                        //     ->label('Profile Photo')
-                        //     ->image()
-                        //     ->directory('profile-photos')
-                        //     ->visibility('public')
-                        //     ->imageEditor(),
+                        Select::make('user_category_id')
+                            ->label('User Category')
+                            ->relationship('category', 'name') // matches the method name exactly
+                            ->searchable()
+                            ->required()
+                            ->preload(),
 
                         Forms\Components\FileUpload::make('profile_photo_path')
                             ->label('Profile Photo')
@@ -113,6 +115,12 @@ class UserResource extends Resource
                     ->searchable()
                     ->sortable(),
 
+                Tables\Columns\TextColumn::make('category.name')
+                    ->label('Category')
+                    ->sortable()
+                    ->searchable(),
+
+
                 Tables\Columns\TextColumn::make('role')
                     ->badge()
                     ->color(fn(string $state): string => match ($state) {
@@ -124,10 +132,6 @@ class UserResource extends Resource
                     ->formatStateUsing(fn(string $state): string => ucfirst($state))
                     ->sortable(),
 
-                Tables\Columns\IconColumn::make('email_verified_at')
-                    ->label('Verified')
-                    ->boolean()
-                    ->sortable(),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
