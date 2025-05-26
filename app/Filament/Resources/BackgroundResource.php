@@ -4,6 +4,7 @@ use App\Filament\Resources\BackgroundResource\Pages;
 use App\Filament\Resources\BackgroundResource\RelationManagers;
 use App\Models\Background;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -36,6 +37,12 @@ class BackgroundResource extends Resource
                                             ->required()
                                             ->columnSpanFull(),
 
+                                        Select::make('user_category_id')
+                                            ->label('Backgroud Group')
+                                            ->relationship('category', 'name') // matches the method name exactly
+                                            ->searchable()
+                                            ->required()
+                                            ->preload(),
 
                                         Forms\Components\Toggle::make('status')
                                             ->label('Active')
@@ -45,6 +52,7 @@ class BackgroundResource extends Resource
                                             ->label('Premium Background')
                                             ->required(),
                                     ])->columnSpanFull(),
+
                             ]),
                     ]),
                 Forms\Components\Group::make()
@@ -88,6 +96,10 @@ class BackgroundResource extends Resource
                     ->label('Premium')
                     ->boolean()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('category.name')
+                    ->label('Group')
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

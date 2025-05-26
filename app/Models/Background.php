@@ -14,11 +14,17 @@ class Background extends Model
         'image_path',
         'event_date',
         'status',
-        'is_premium'
+        'is_premium',
+        'user_category_id'
     ];
 
     protected $casts = [
         'status' => 'boolean',
         'is_premium' => 'boolean',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(UserCategory::class, 'user_category_id');
+    }
 }
