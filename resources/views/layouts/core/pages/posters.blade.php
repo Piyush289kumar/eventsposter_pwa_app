@@ -4,6 +4,7 @@
         .grayscale-img {
             filter: grayscale(100%);
         }
+
         .disabled-link {
             pointer-events: none;
             opacity: 0.6;
@@ -47,13 +48,16 @@
                                 <p class="olivia-name" id="time-left-{{ $background->id }}" style="color:#E83F25;">
                                     Time left to delete: calculating...
                                 </p>
-                                <div class="play-btn-selct-btn-main">
+
+                                <div class="play-btn-selct-btn-main" style="align-items: start;">
                                     <div class="button-main select" style="width: 35%;">
-                                        <button type="button" class="main-bg-color-btn bg-black copy-caption-btn p-2" style=" width: 100%;"
-                                            data-caption="{{ $background->caption }}">
-                                            <span class="music-graph" style="font-weight: 700; width: 100%;">📄 Caption</span>
+                                        <button type="button" class="main-bg-color-btn bg-black toggle-caption-btn p-2"
+                                            data-target="#caption-box-{{ $background->id }}" style="width: 100%;">
+                                            <span class="music-graph" style="font-weight: 700; width: 100%;">
+                                                Caption</span>
                                         </button>
                                     </div>
+
                                     <div class="button-main select" style="width: 65%;">
                                         <a href="{{ route('download.combined.poster', $background->id) }}"
                                             class="main-bg-color-btn">
@@ -61,6 +65,24 @@
                                         </a>
                                     </div>
                                 </div>
+                                <!-- Caption box outside the buttons -->
+                                <div id="caption-box-{{ $background->id }}"
+                                    class="caption-box main-bg-color-btn bg-black p-2"
+                                    style="display: none; padding: 10px; background: #f9f9f9; border: 1px solid #ccc; margin-top: 5px;">
+                                    <div style="display: flex; flex-direction:  column; align-items: end;">
+                                        <p class="caption-text" style="margin-bottom: 10px; width: 100%;">
+                                            {{ $background->caption }}</p>
+                                        <button type="button" class="copy-caption-btn btn btn-sm btn-dark" style="font-weight: 700;"
+                                            data-caption="{{ $background->caption }}">
+                                            📄 Copy Caption
+                                        </button>
+                                    </div>
+                                </div>
+
+
+
+
+
                             </div>
                         @endforeach
                     @else
@@ -100,18 +122,33 @@
                                 <p class="olivia-name" id="time-left-{{ $background->id }}" style="color:#E83F25;">
                                     Time left to delete: calculating...
                                 </p>
-                                <div class="play-btn-selct-btn-main">
+                                 <div class="play-btn-selct-btn-main" style="align-items: start;">
                                     <div class="button-main select" style="width: 35%;">
-                                        <button type="button" class="main-bg-color-btn bg-black copy-caption-btn p-2" style=" width: 100%;"
-                                            data-caption="{{ $background->caption }}">
-                                            <span class="music-graph" style="font-weight: 700; width: 100%;">📄 Caption</span>
+                                        <button type="button" class="main-bg-color-btn bg-black toggle-caption-btn p-2"
+                                            data-target="#caption-box-{{ $background->id }}" style="width: 100%;">
+                                            <span class="music-graph" style="font-weight: 700; width: 100%;">
+                                                Caption</span>
                                         </button>
                                     </div>
+
                                     <div class="button-main select" style="width: 65%;">
                                         <a href="{{ route('download.combined.poster', $background->id) }}"
                                             class="main-bg-color-btn">
                                             <span class="music-graph">Download</span>
                                         </a>
+                                    </div>
+                                </div>
+                                <!-- Caption box outside the buttons -->
+                                <div id="caption-box-{{ $background->id }}"
+                                    class="caption-box main-bg-color-btn bg-black p-2"
+                                    style="display: none; padding: 10px; background: #f9f9f9; border: 1px solid #ccc; margin-top: 5px;">
+                                    <div style="display: flex; flex-direction:  column; align-items: end;">
+                                        <p class="caption-text" style="margin-bottom: 10px; width: 100%;">
+                                            {{ $background->caption }}</p>
+                                        <button type="button" class="copy-caption-btn btn btn-sm btn-dark" style="font-weight: 700;"
+                                            data-caption="{{ $background->caption }}">
+                                            📄 Copy Caption
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -150,20 +187,35 @@
                             <p class="olivia-name" id="time-left-{{ $background->id }}" style="color:#E83F25;">
                                 Time left to delete: calculating...
                             </p>
-                            <div class="play-btn-selct-btn-main">
-                                <div class="button-main select" style="width: 35%;">
-                                        <button type="button" class="main-bg-color-btn bg-black copy-caption-btn p-2" style=" width: 100%;"
-                                            data-caption="{{ $background->caption }}">
-                                            <span class="music-graph" style="font-weight: 700; width: 100%;">📄 Caption</span>
+                             <div class="play-btn-selct-btn-main" style="align-items: start;">
+                                    <div class="button-main select" style="width: 35%;">
+                                        <button type="button" class="main-bg-color-btn bg-black toggle-caption-btn p-2"
+                                            data-target="#caption-box-{{ $background->id }}" style="width: 100%;">
+                                            <span class="music-graph" style="font-weight: 700; width: 100%;">
+                                                Caption</span>
                                         </button>
                                     </div>
-                                <div class="button-main select" style="width: 65%;">
-                                    <a href="{{ route('download.combined.poster', $background->id) }}"
-                                        class="main-bg-color-btn">
-                                        <span class="music-graph">Download</span>
-                                    </a>
+
+                                    <div class="button-main select" style="width: 65%;">
+                                        <a href="{{ route('download.combined.poster', $background->id) }}"
+                                            class="main-bg-color-btn">
+                                            <span class="music-graph">Download</span>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
+                                <!-- Caption box outside the buttons -->
+                                <div id="caption-box-{{ $background->id }}"
+                                    class="caption-box main-bg-color-btn bg-black p-2"
+                                    style="display: none; padding: 10px; background: #f9f9f9; border: 1px solid #ccc; margin-top: 5px;">
+                                    <div style="display: flex; flex-direction:  column; align-items: end;">
+                                        <p class="caption-text" style="margin-bottom: 10px; width: 100%;">
+                                            {{ $background->caption }}</p>
+                                        <button type="button" class="copy-caption-btn btn btn-sm btn-dark" style="font-weight: 700;"
+                                            data-caption="{{ $background->caption }}">
+                                            📄 Copy Caption
+                                        </button>
+                                    </div>
+                                </div>
                         </div>
                     @endforeach
                     {{-- Pagination links --}}
@@ -181,6 +233,7 @@
         const container = document.getElementById('capture-' + id);
         const downloadBtn = container.closest('.ai-voice-car-main').querySelector('.main-bg-color-btn');
         const images = container.querySelectorAll('img');
+
         function updateTime() {
             const created = new Date(createdAt);
             const expiry = new Date(created.getTime() + 3 * 24 * 60 * 60 * 1000); // +3 days
@@ -218,17 +271,27 @@
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.copy-caption-btn').forEach(button => {
-            button.addEventListener('click', function() {
+        // Toggle caption box using data-target
+        document.querySelectorAll('.toggle-caption-btn').forEach(toggleBtn => {
+            toggleBtn.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const captionBox = document.querySelector(targetId);
+                if (captionBox) {
+                    $(captionBox).slideToggle(300);
+                }
+            });
+        });
+
+        // Copy caption functionality
+        document.querySelectorAll('.copy-caption-btn').forEach(copyBtn => {
+            copyBtn.addEventListener('click', function() {
                 const caption = this.getAttribute('data-caption');
-                // Create a temporary textarea to copy text
                 const textarea = document.createElement('textarea');
                 textarea.value = caption;
                 document.body.appendChild(textarea);
                 textarea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textarea);
-                // Optional: show feedback
                 alert('Caption copied to clipboard!');
             });
         });
