@@ -13,6 +13,10 @@ use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver as GdDriver;
 use Illuminate\Support\Facades\File;
 
+use FFMpeg\FFMpeg;
+use FFMpeg\Coordinate\TimeCode;
+use FFMpeg\Filters\Video\VideoFilters;
+use FFMpeg\Format\Video\X264;
 
 
 class PostersController extends Controller
@@ -87,6 +91,60 @@ class PostersController extends Controller
 
         return response()->download($tempPath)->deleteFileAfterSend(true);
     }
+
+
+
+    public function downloadCombinedVideo($backgroundId)
+    {
+        try {
+            $user_id = Auth::id();
+            $background = Background::findOrFail($backgroundId);
+            $frame = Frame::where('user_id', $user_id)->firstOrFail();
+
+            $backgroundVideoPath = storage_path('app/public/' . $background->video_path);
+            $overlayImagePath = storage_path('app/public/' . $frame->image_path);
+            $outputPath = storage_path('app/public/temp/combined_' . $backgroundId . '.mp4');
+
+            // Create temp directory if not exists
+            $tempDir = storage_path('app/public/temp');
+            if (!\File::exists($tempDir)) {
+                \File::makeDirectory($tempDir, 0755, true);
+            }
+
+            // Resize overlay image to match video resolution using Intervention Image
+            $ffprobe = \FFMpeg\FFProbe::create();
+            $videoDimensions = $ffprobe->streams($backgroundVideoPath)
+                ->videos()->first()->getDimensions();
+
+            $manager = new ImageManager(new GdDriver());
+            $resizedOverlayPath = $tempDir . '/resized_overlay_' . $backgroundId . '.png';
+
+            $manager->read($overlayImagePath)
+                ->resize($videoDimensions->getWidth(), $videoDimensions->getHeight())
+                ->toPng()->save($resizedOverlayPath);
+
+            // Setup FFmpeg and apply watermark
+            $ffmpeg = FFMpeg::create();
+            $video = $ffmpeg->open($backgroundVideoPath);
+
+            $video->filters()->watermark($resizedOverlayPath, [
+                'position' => 'absolute',
+                'top' => 0,
+                'left' => 0,
+            ]);
+
+            $format = new X264('libmp3lame', 'libx264');
+            $video->save($format, $outputPath);
+
+            return response()->download($outputPath)->deleteFileAfterSend(true);
+
+        } catch (\Exception $e) {
+            \Log::error('Failed to generate combined video: ' . $e->getMessage());
+            return response()->json(['error' => 'Failed to generate combined video'], 500);
+        }
+    }
+
+
 
 
 }
