@@ -35,13 +35,20 @@ Route::middleware([
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    
+    Route::get('/profile-frames', [ProfileController::class, 'show_frames'])->name('profile.frames.show');
+    Route::post('/profile-frames', [ProfileController::class, 'update_frames'])->name('profile.frames.update');
+
+
+
     Route::get('/feedback', [FeedbackController::class, 'index'])->name('feedback');
     Route::get('/posters', [PostersController::class, 'index'])->name('posters');
     // Poster Download
-    Route::get('/download-poster/{id}', [PostersController::class, 'downloadCombinedImage'])->name('download.combined.poster');        
+    Route::get('/download-poster/{id}', [PostersController::class, 'downloadCombinedImage'])->name('download.combined.poster');
     // Video Download
     Route::get('/download-video/{id}', [PostersController::class, 'downloadCombinedVideo'])->name('download.combined.poster.video');
+
+
+
 
 
 

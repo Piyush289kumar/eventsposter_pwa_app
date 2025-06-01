@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Models\Frame;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -66,6 +67,33 @@ class ProfileController extends Controller
         $user->save();
         return redirect()->route('profile')->with('success', 'Profile updated successfully!');
     }
+
+    public function show_frames()
+    {
+
+        $user = Auth::user();
+        $frames = Frame::where('is_premium', false)->orderBy('created_at', 'desc')->paginate(12);
+
+        return view('layouts.core.pages.invitefriends', [
+            'frames' => $frames,
+            'user' => $user,
+        ]);
+
+
+    }
+    public function update_frames(Request $request)
+    {
+        $request->validate([
+            'frame_id' => 'required|exists:frames,id',
+        ]);
+
+        $user = auth()->user();
+        $user->frame_id = $request->frame_id;
+        $user->save();
+
+        return redirect()->route('profile.frames.show')->with('success', 'Frame updated successfully!');
+    }
+
 
 
 

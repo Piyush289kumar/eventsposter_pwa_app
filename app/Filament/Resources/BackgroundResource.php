@@ -41,7 +41,7 @@ class BackgroundResource extends Resource
                                             ->label('Backgroud Group')
                                             ->relationship('category', 'name') // matches the method name exactly
                                             ->searchable()
-                                            ->required()
+                                            // ->required()
                                             ->preload(),
 
                                         Forms\Components\Toggle::make('status')

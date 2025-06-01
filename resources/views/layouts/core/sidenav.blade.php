@@ -97,16 +97,16 @@
                   <img class="setting-arrow" src="assets/images/svg/right-half-arrow-black.svg"
                       alt="right-half-arrow-black">
               </a>
-              {{-- <a href="{{ route('invite') }}" class="home-setting-icons-main">
+              <a href="{{ route('profile.frames.show') }}" class="home-setting-icons-main">
                   <div class="setting-opestion-main">
                       <div class="setting-icons-main">
                           <img src="assets/images/svg/inviteFriend-icon.svg" alt="inviteFriend-icon">
                       </div>
-                      <h2 class="new-notification">Invite Friends</h2>
+                      <h2 class="new-notification">All Frames</h2>
                   </div>
                   <img class="setting-arrow" src="assets/images/svg/right-half-arrow-black.svg"
                       alt="right-half-arrow-black">
-              </a> --}}
+              </a>
               {{-- <a href="deleteDeactivate.html" class="home-setting-icons-main">
                         <div class="setting-opestion-main">
                             <div class="setting-icons-main setting-icons-main2">
