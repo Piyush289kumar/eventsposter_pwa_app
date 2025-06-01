@@ -31,7 +31,7 @@
                     class="upgradeNowButton">Upgrade Now</a>
             </div>
         </div>
-        <a href="billingSubscriptions.html" class="home-setting-icons-main">
+        <a href="{{route('profile.frames.show')}}" class="home-setting-icons-main">
             <div class="setting-opestion-main">
                 <div class="setting-icons-main">
                     <img src="assets/images/svg/security.svg" alt="security">

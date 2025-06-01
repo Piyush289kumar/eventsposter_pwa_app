@@ -4,6 +4,7 @@
         .grayscale-img {
             filter: grayscale(100%);
         }
+
         .disabled-link {
             pointer-events: none;
             opacity: 0.6;
@@ -39,6 +40,8 @@
                                     <img src="{{ asset('storage/' . $frame->image_path) }}" alt="PerAI-img2"
                                         style="position: absolute; bottom: 0; left: 0; width: 100%; height: auto;
                 border-radius: 3%; pointer-events: none; object-fit: cover;">
+                                    <img src="{{ asset('storage/' . $user_profile) }}" alt="PerAI-img2"
+                                        style="position: absolute; bottom: 0; right:-5; width: 100px; pointer-events: none; object-fit: contain;">
                                 </div>
                                 <p class="olivia-name" style="border-top: 1px solid #6218FF; margin-top: 5px;">
                                     {{ $background->title ?? 'Title' }}</p>
@@ -81,13 +84,13 @@
                                     style="display: none; padding: 10px; background: #fff; border: 1px solid #ccc; margin-top: 5px;">
                                     <div style="display: flex; justify-content: center; gap: 10px;">
                                         <a href="{{ route('download.combined.poster', $background->id) }}"
-                                            class="main-bg-color-btn px-5 py-2" style="font-weight: 700;">
+                                            class="main-bg-color-btn px-4 py-2" style="font-weight: 700;">
                                             🖼️ Poster
                                         </a>
                                         @if ($background->video_path)
                                             <a href="{{ route('download.combined.poster.video', $background->id) }}"
-                                                class="main-bg-color-btn px-5 py-2" style="font-weight: 700;">
-                                                🎥  Reel
+                                                class="main-bg-color-btn px-4 py-2" style="font-weight: 700;">
+                                                🎥 Reel
                                             </a>
                                         @else
                                             <button class="main-bg-color-btn btn btn-secondary" style="font-weight: 700;"
@@ -127,6 +130,8 @@
                                     <img src="{{ asset('storage/' . $frame->image_path) }}" alt="PerAI-img2"
                                         style="position: absolute; bottom: 0; left: 0; width: 100%; height: auto;
                 border-radius: 3%; pointer-events: none; object-fit: cover;">
+                                    <img src="{{ asset('storage/' . $user_profile) }}" alt="PerAI-img2"
+                                        style="position: absolute; bottom: 0; right:-5; width: 100px; pointer-events: none; object-fit: contain;">
                                 </div>
                                 <p class="olivia-name" style="border-top: 1px solid #6218FF; margin-top: 5px;">
                                     {{ $background->title ?? 'Title' }}</p>
@@ -171,13 +176,13 @@
                                     style="display: none; padding: 10px; background: #fff; border: 1px solid #ccc; margin-top: 5px;">
                                     <div style="display: flex; justify-content: center; gap: 10px;">
                                         <a href="{{ route('download.combined.poster', $background->id) }}"
-                                            class="main-bg-color-btn px-5 py-2" style="font-weight: 700;">
+                                            class="main-bg-color-btn px-4 py-2" style="font-weight: 700;">
                                             🖼️ Poster
                                         </a>
                                         @if ($background->video_path)
                                             <a href="{{ route('download.combined.poster.video', $background->id) }}"
-                                                class="main-bg-color-btn px-5 py-2" style="font-weight: 700;">
-                                                🎥  Reel
+                                                class="main-bg-color-btn px-4 py-2" style="font-weight: 700;">
+                                                🎥 Reel
                                             </a>
                                         @else
                                             <button class="main-bg-color-btn btn btn-secondary" style="font-weight: 700;"
@@ -215,6 +220,8 @@
                                 <img src="{{ asset('storage/' . $frame->image_path) }}" alt="PerAI-img2"
                                     style="position: absolute; bottom: 0; left: 0; width: 100%; height: auto;
                 border-radius: 3%; pointer-events: none; object-fit: cover;">
+                                <img src="{{ asset('storage/' . $user_profile) }}" alt="PerAI-img2"
+                                    style="position: absolute; bottom: 0; right:-5; width: 100px; pointer-events: none; object-fit: contain;">
                             </div>
                             <p class="olivia-name" style="border-top: 1px solid #6218FF; margin-top: 5px;">
                                 {{ $background->title ?? 'Title' }}</p>
@@ -257,13 +264,13 @@
                                 style="display: none; padding: 10px; background: #fff; border: 1px solid #ccc; margin-top: 5px;">
                                 <div style="display: flex; justify-content: center; gap: 10px;">
                                     <a href="{{ route('download.combined.poster', $background->id) }}"
-                                        class="main-bg-color-btn px-5 py-2" style="font-weight: 700;">
+                                        class="main-bg-color-btn px-4 py-2" style="font-weight: 700;">
                                         🖼️ Poster
                                     </a>
                                     @if ($background->video_path)
                                         <a href="{{ route('download.combined.poster.video', $background->id) }}"
-                                            class="main-bg-color-btn px-5 py-2" style="font-weight: 700;">
-                                            🎥  Reel
+                                            class="main-bg-color-btn px-4 py-2" style="font-weight: 700;">
+                                            🎥 Reel
                                         </a>
                                     @else
                                         <button class="main-bg-color-btn btn btn-secondary" style="font-weight: 700;"
@@ -335,6 +342,7 @@
         const downloadLinks = downloadBox ? downloadBox.querySelectorAll('a') : [];
         const fallbackButtons = downloadBox ? downloadBox.querySelectorAll('button') : [];
         const images = container ? container.querySelectorAll('img') : [];
+
         function updateTime() {
             const created = new Date(createdAt);
             const expiry = new Date(created.getTime() + 3 * 24 * 60 * 60 * 1000); // +3 days

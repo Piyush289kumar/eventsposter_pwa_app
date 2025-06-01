@@ -26,7 +26,10 @@ class PostersController extends Controller
         $user = Auth::user(); // Get logged-in user
         $userCategoryId = $user->user_category_id;
 
-        $frame = Frame::where('user_id', $user->id)->first();
+        $frame = Frame::find($user->frame_id);
+
+        $user_profile = $user->profile_photo_path;
+
         $today = now()->format('Y-m-d');
         $tomorrow = now()->addDay()->format('Y-m-d');
 
@@ -55,42 +58,90 @@ class PostersController extends Controller
             'todayBackgrounds' => $todayBackgrounds,
             'tomorrowBackgrounds' => $tomorrowBackgrounds,
             'restBackgrounds' => $restBackgrounds,
-            'frame' => $frame
+            'frame' => $frame,
+            'user_profile' => $user_profile
         ]);
     }
 
 
     public function downloadCombinedImage($backgroundId)
     {
-        $user_id = Auth::id();
+        $user = Auth::user();
         $background = Background::findOrFail($backgroundId);
-        $frame = Frame::where('user_id', $user_id)->firstOrFail();
+        $frame = Frame::findOrFail($user->frame_id);
+        $user_profile = $user->profile_photo_path;
 
         $backgroundPath = storage_path('app/public/' . $background->image_path);
         $framePath = storage_path('app/public/' . $frame->image_path);
+        $profilePath = storage_path('app/public/' . $user_profile);
 
-        // ✅ Use GD driver explicitly
         $manager = new ImageManager(new GdDriver());
 
+        // Load background
         $bgImage = $manager->read($backgroundPath);
-        $frameImage = $manager->read($framePath)->resize(width: $bgImage->width(), height: $bgImage->height());
+
+        // Resize and overlay frame
+        $frameImage = $manager->read($framePath)->resize(
+            width: $bgImage->width(),
+            height: $bgImage->height()
+        );
         $bgImage->place($frameImage, 'bottom');
 
+        // Add profile image at bottom-right
+        if (File::exists($profilePath)) {
+            $profileImg = $manager->read($profilePath)->resize(150, 150); // Adjust size as needed
 
-        $filename = 'combined_' . $backgroundId . '.jpg';
-        $tempPath = storage_path('app/public/temp/' . $filename);
+            $x = $bgImage->width() - $profileImg->width(); // Align right
+            $y = $bgImage->height() - $profileImg->height(); // Align bottom
+
+            $bgImage->place($profileImg, 'top-left', $x, $y);
+        }
+
+        // Save combined image as PNG (lossless quality)
         $tempDir = storage_path('app/public/temp');
         if (!File::exists($tempDir)) {
             File::makeDirectory($tempDir, 0755, true);
         }
 
-        $filename = 'combined_' . $backgroundId . '.jpg';
+        $filename = 'kdPosters_' . $backgroundId . '.jpg';
         $tempPath = $tempDir . '/' . $filename;
 
-        $bgImage->toJpeg(100)->save($tempPath);
+        $bgImage->toPng()->save($tempPath);
 
         return response()->download($tempPath)->deleteFileAfterSend(true);
     }
+
+    // public function downloadCombinedImage($backgroundId)
+    // {
+    //     $user_id = Auth::id();
+    //     $background = Background::findOrFail($backgroundId);
+    //     $frame = Frame::where('user_id', $user_id)->firstOrFail();
+
+    //     $backgroundPath = storage_path('app/public/' . $background->image_path);
+    //     $framePath = storage_path('app/public/' . $frame->image_path);
+
+    //     // ✅ Use GD driver explicitly
+    //     $manager = new ImageManager(new GdDriver());
+
+    //     $bgImage = $manager->read($backgroundPath);
+    //     $frameImage = $manager->read($framePath)->resize(width: $bgImage->width(), height: $bgImage->height());
+    //     $bgImage->place($frameImage, 'bottom');
+
+
+    //     $filename = 'combined_' . $backgroundId . '.jpg';
+    //     $tempPath = storage_path('app/public/temp/' . $filename);
+    //     $tempDir = storage_path('app/public/temp');
+    //     if (!File::exists($tempDir)) {
+    //         File::makeDirectory($tempDir, 0755, true);
+    //     }
+
+    //     $filename = 'combined_' . $backgroundId . '.jpg';
+    //     $tempPath = $tempDir . '/' . $filename;
+
+    //     $bgImage->toJpeg(100)->save($tempPath);
+
+    //     return response()->download($tempPath)->deleteFileAfterSend(true);
+    // }
 
 
 

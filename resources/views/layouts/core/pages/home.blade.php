@@ -67,7 +67,7 @@
 
 
             @foreach ($backgrounds as $background)
-                <div class="ai-voice-car-main" style="overflow: hidden; height:auto;">
+                <div class="ai-voice-car-main mb-3" style="overflow: hidden; height: 310px;">
                     {{-- Image section to render and download --}}
                     <div class="PerAI-img-mains capture-img" id="capture-{{ $background->id }}"
                         style="position: relative; width: 100%; border-radius: 3%; overflow: hidden;">
@@ -75,38 +75,33 @@
                         <img src="{{ asset('storage/' . $background->image_path) }}" alt="PerAI-img1"
                             style="width: 100%; display: block; border-radius: 3%;">
                         {{-- Frame overlay image --}}
+
                         <img src="{{ asset('storage/' . $frame->image_path) }}" alt="PerAI-img2"
                             style="position: absolute; bottom: 0; left: 0; width: 100%; height: auto;
                 border-radius: 3%; pointer-events: none; object-fit: cover;">
+
+
+                        <img src="{{ asset('storage/' . $user_profile) }}" alt="PerAI-img2"
+                            style="position: absolute; bottom: 0; right:-5; width: 50px; pointer-events: none; object-fit: contain;">
                     </div>
-                    <p class="olivia-name"
-                        style="border-top: 1px solid #6218FF; margin-top: 5px; height: 40px; overflow: auto; padding-top: 5px;">
+                    <p class="olivia-name" style="border-top: 1px solid #6218FF; margin-top: 5px;">
                         {{ $background->title ?? 'Title' }}</p>
-                    <p class="olivia-lagu">{{ \Carbon\Carbon::parse($background->event_date)->format('d F Y') }}</p>
+                    <p class="olivia-lagu">{{ \Carbon\Carbon::parse($background->event_date)->format('d F Y') }}
+                    </p>
                     <p class="olivia-name" id="time-left-{{ $background->id }}" style="color:#E83F25;">
                         Time left to delete: calculating...
                     </p>
-                    <div class="play-btn-selct-btn-main">
-                        {{-- <div class="play-btn">
-                                    <img class="play-icon" src="assets/images/svg/play-btn.svg" alt="play-btn"
-                                        onclick="shareImage('capture-{{ $background->id }}')" style="cursor: pointer;">
-                                </div> --}}
-                        <div class="button-main select">
-                            {{-- <a href="#" class="main-bg-color-btn"
-                                        onclick="shareImage('capture-{{ $background->id }}')" style="cursor: pointer;">
-                                        {{-- onclick="downloadImage('capture-{{ $background->id }}')"> -
-                                        <span class="music-graph">Download</span>
-                                    </a> --}}
-
-
-
-                            <a href="{{ route('download.combined.poster', $background->id) }}" class="main-bg-color-btn">
-                                <span class="music-graph">Download</span>
-                            </a>
-
-
+                    <div class="play-btn-selct-btn-main" style="align-items: start;">
+                        <!-- Caption Toggle Button -->
+                        
+                        <!-- Download Toggle Button -->
+                        <div class="button-main select" style="width: 100%;">
+                            <a href="{{route('posters')}}" class="main-bg-color-btn toggle-download-btn p-2"
+                                data-target="#download-box-{{ $background->id }}" style="width: 100%;">
+                                <span class="music-graph" style="font-weight: 700;">View</span>
+                        </a>
                         </div>
-                    </div>
+                    </div>                   
                 </div>
             @endforeach
 
