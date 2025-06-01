@@ -113,9 +113,14 @@ class PostersController extends Controller
 
     public function downloadCombinedImage($backgroundId)
     {
-        $user_id = Auth::id();
+        // $user_id = Auth::id();
+        // $background = Background::findOrFail($backgroundId);
+        // $frame = Frame::where('user_id', $user_id)->firstOrFail();
+
+        $user = Auth::user();
         $background = Background::findOrFail($backgroundId);
-        $frame = Frame::where('user_id', $user_id)->firstOrFail();
+        $frame = Frame::findOrFail($user->frame_id);
+
 
         $backgroundPath = storage_path('app/public/' . $background->image_path);
         $framePath = storage_path('app/public/' . $frame->image_path);
