@@ -2,7 +2,7 @@
     <x-authentication-card>
         <x-slot name="logo">
             {{-- <x-authentication-card-logo /> --}}
-            <img src="{{ asset('assets/images/svg/logo.svg') }}" alt="Logo" style="width: 150px; margin: auto;">
+            <img src="{{ asset('assets/images/svg/logo.png') }}" alt="Logo" style="width: 120px; margin: auto;">
             <p class="loade-text" style="font-size: 40px; font-weight: 700;" data-text="{{ config('app.name', 'Laravel') }}">{{ config('app.name', 'Laravel') }}</p>
         </x-slot>
 

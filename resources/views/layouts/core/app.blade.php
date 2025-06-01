@@ -9,7 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="icon" href="assets/images/svg/favicon.svg">
+    <link rel="icon" href="assets/images/svg/favicon.png">
     <link rel="stylesheet" href="assets/css/swap.css">
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -25,7 +25,7 @@
     <div class="site_content">
         <!-- ====================================== Preloader ===================================== -->
         <div class="page-loader" id="page-loader">
-            <img src="assets/images/svg/logo.svg" alt="logo" style="width: 200px;">
+            <img src="assets/images/svg/logo.png" alt="logo" style="width: 200px;">
             <p class="loade-text" style="font-size: 40px;" data-text="{{ config('app.name', 'Laravel') }}">{{ config('app.name', 'Laravel') }}</p>
         </div>
         <!-- ====================================== Header ===================================== -->

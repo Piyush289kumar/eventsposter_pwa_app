@@ -28,6 +28,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'phone',
         'email',
         'password',
         'role',
@@ -68,7 +69,7 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    
+
     public function canAccessFilament(): bool
     {
         return in_array($this->role, ['admin', 'manager']);
