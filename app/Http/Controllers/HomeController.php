@@ -16,6 +16,9 @@ class HomeController extends Controller
         $userCategoryId = $user->user_category_id;
 
         $frame = Frame::find($user->frame_id);
+        if (!$frame) {
+            $frame = Frame::where('title', 'Default')->first();
+        }
 
         $user_profile = $user->profile_photo_path;
 
@@ -25,7 +28,7 @@ class HomeController extends Controller
             ->paginate(2);
 
 
-        return view('layouts.core.pages.home', compact('backgrounds', 'frame', 'user_profile'));
+        return view('layouts.core.pages.home', compact('backgrounds', 'frame', 'user_profile', 'user'));
     }
 
 

@@ -25,8 +25,8 @@
     <div class="site_content">
         <!-- ====================================== Preloader ===================================== -->
         <div class="page-loader" id="page-loader">
-            <img src="assets/images/svg/logo.svg" alt="logo">
-            <p class="loade-text" data-text="{{ config('app.name', 'Laravel') }}">{{ config('app.name', 'Laravel') }}</p>
+            <img src="assets/images/svg/logo.svg" alt="logo" style="width: 200px;">
+            <p class="loade-text" style="font-size: 40px;" data-text="{{ config('app.name', 'Laravel') }}">{{ config('app.name', 'Laravel') }}</p>
         </div>
         <!-- ====================================== Header ===================================== -->
         @include('layouts.core.header')

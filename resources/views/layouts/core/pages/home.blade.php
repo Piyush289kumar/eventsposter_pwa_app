@@ -27,6 +27,41 @@
                     class="upgradeNowButton">Upgrade Now</a>
             </div>
         </div>
+
+
+
+        @if (!$user->category)
+            <div class="trasnsBox-main_ mt-0 pt-0 mb-3">
+                <div class="trasnsBox speech-trans d-flex items-center" style="align-items: center">
+                    <div class="tran-icons">
+                        <img src="assets/images/svg/message.svg" alt="message">
+                    </div>
+                    <h2 class="speechAi pt-0 mt-0 mx-2">✅ पहले अपना खाता सक्रिय करें!</h2>
+                </div>
+                <div class="bg-danger px-3 py-3 mt-3"
+                    style="border-radius: 28px; color: #fff; font-size: 18px; font-weight: 800;">
+                    <p>नमस्ते {{ $user->name }} जी</p>
+                    <hr>
+                    <p>आपका खाता अभी तक सक्रिय नहीं है। <br>
+                        सेवा का पूरा लाभ उठाने के लिए कृपया पहले अपना खाता सक्रिय करें।</p>
+                    <p>हमसे संपर्क करें: 94795 90611</p>
+                    <hr>
+
+                    <p style="font-size: 16px; font-weight: 600;">🏆 सक्रिय करने के बाद आपको क्या मिलेगा: <br>
+
+                        📅 आज का विशेष पोस्टर (Today's Poster) <br>
+
+                        🖼️ फ्रेम और टेम्पलेट्स की पूरी लाइब्रेरी <br>
+
+                        🎨 हाई-क्वालिटी डाउनलोड विकल्प <br>
+
+                        📨 कस्टम डिज़ाइन सेवाएँ और ज्यादा</p>
+                </div>
+            </div>
+        @endif
+
+
+
         <div class="trasnsBox-main">
             <div class="trasnsBox speech-trans">
                 <div class="tran-icons">
@@ -93,15 +128,15 @@
                     </p>
                     <div class="play-btn-selct-btn-main" style="align-items: start;">
                         <!-- Caption Toggle Button -->
-                        
+
                         <!-- Download Toggle Button -->
                         <div class="button-main select" style="width: 100%;">
-                            <a href="{{route('posters')}}" class="main-bg-color-btn toggle-download-btn p-2"
+                            <a href="{{ route('posters') }}" class="main-bg-color-btn toggle-download-btn p-2"
                                 data-target="#download-box-{{ $background->id }}" style="width: 100%;">
                                 <span class="music-graph" style="font-weight: 700;">View</span>
-                        </a>
+                            </a>
                         </div>
-                    </div>                   
+                    </div>
                 </div>
             @endforeach
 

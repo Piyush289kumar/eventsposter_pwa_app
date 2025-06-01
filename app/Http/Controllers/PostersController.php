@@ -28,6 +28,10 @@ class PostersController extends Controller
 
         $frame = Frame::find($user->frame_id);
 
+        if (!$frame) {
+            $frame = Frame::where('title', 'Default')->first();
+        }    
+
         $user_profile = $user->profile_photo_path;
 
         $today = now()->format('Y-m-d');
