@@ -64,84 +64,84 @@ class PostersController extends Controller
     }
 
 
-    public function downloadCombinedImage($backgroundId)
-    {
-        $user = Auth::user();
-        $background = Background::findOrFail($backgroundId);
-        $frame = Frame::findOrFail($user->frame_id);
-        $user_profile = $user->profile_photo_path;
-
-        $backgroundPath = storage_path('app/public/' . $background->image_path);
-        $framePath = storage_path('app/public/' . $frame->image_path);
-        $profilePath = storage_path('app/public/' . $user_profile);
-
-        $manager = new ImageManager(new GdDriver());
-
-        // Load background
-        $bgImage = $manager->read($backgroundPath);
-
-        // Resize and overlay frame
-        $frameImage = $manager->read($framePath)->resize(
-            width: $bgImage->width(),
-            height: $bgImage->height()
-        );
-        $bgImage->place($frameImage, 'bottom');
-
-        // Add profile image at bottom-right
-        if (File::exists($profilePath)) {
-            $profileImg = $manager->read($profilePath)->resize(150, 150); // Adjust size as needed
-
-            $x = $bgImage->width() - $profileImg->width(); // Align right
-            $y = $bgImage->height() - $profileImg->height(); // Align bottom
-
-            $bgImage->place($profileImg, 'top-left', $x, $y);
-        }
-
-        // Save combined image as PNG (lossless quality)
-        $tempDir = storage_path('app/public/temp');
-        if (!File::exists($tempDir)) {
-            File::makeDirectory($tempDir, 0755, true);
-        }
-
-        $filename = 'kdPosters_' . $backgroundId . '.jpg';
-        $tempPath = $tempDir . '/' . $filename;
-
-        $bgImage->toPng()->save($tempPath);
-
-        return response()->download($tempPath)->deleteFileAfterSend(true);
-    }
-
     // public function downloadCombinedImage($backgroundId)
     // {
-    //     $user_id = Auth::id();
+    //     $user = Auth::user();
     //     $background = Background::findOrFail($backgroundId);
-    //     $frame = Frame::where('user_id', $user_id)->firstOrFail();
+    //     $frame = Frame::findOrFail($user->frame_id);
+    //     $user_profile = $user->profile_photo_path;
 
     //     $backgroundPath = storage_path('app/public/' . $background->image_path);
     //     $framePath = storage_path('app/public/' . $frame->image_path);
+    //     $profilePath = storage_path('app/public/' . $user_profile);
 
-    //     // ✅ Use GD driver explicitly
     //     $manager = new ImageManager(new GdDriver());
 
+    //     // Load background
     //     $bgImage = $manager->read($backgroundPath);
-    //     $frameImage = $manager->read($framePath)->resize(width: $bgImage->width(), height: $bgImage->height());
+
+    //     // Resize and overlay frame
+    //     $frameImage = $manager->read($framePath)->resize(
+    //         width: $bgImage->width(),
+    //         height: $bgImage->height()
+    //     );
     //     $bgImage->place($frameImage, 'bottom');
 
+    //     // Add profile image at bottom-right
+    //     if (File::exists($profilePath)) {
+    //         $profileImg = $manager->read($profilePath)->resize(150, 150); // Adjust size as needed
 
-    //     $filename = 'combined_' . $backgroundId . '.jpg';
-    //     $tempPath = storage_path('app/public/temp/' . $filename);
+    //         $x = $bgImage->width() - $profileImg->width(); // Align right
+    //         $y = $bgImage->height() - $profileImg->height(); // Align bottom
+
+    //         $bgImage->place($profileImg, 'top-left', $x, $y);
+    //     }
+
+    //     // Save combined image as PNG (lossless quality)
     //     $tempDir = storage_path('app/public/temp');
     //     if (!File::exists($tempDir)) {
     //         File::makeDirectory($tempDir, 0755, true);
     //     }
 
-    //     $filename = 'combined_' . $backgroundId . '.jpg';
+    //     $filename = 'kdPosters_' . $backgroundId . '.jpg';
     //     $tempPath = $tempDir . '/' . $filename;
 
-    //     $bgImage->toJpeg(100)->save($tempPath);
+    //     $bgImage->toPng()->save($tempPath);
 
     //     return response()->download($tempPath)->deleteFileAfterSend(true);
     // }
+
+    public function downloadCombinedImage($backgroundId)
+    {
+        $user_id = Auth::id();
+        $background = Background::findOrFail($backgroundId);
+        $frame = Frame::where('user_id', $user_id)->firstOrFail();
+
+        $backgroundPath = storage_path('app/public/' . $background->image_path);
+        $framePath = storage_path('app/public/' . $frame->image_path);
+
+        // ✅ Use GD driver explicitly
+        $manager = new ImageManager(new GdDriver());
+
+        $bgImage = $manager->read($backgroundPath);
+        $frameImage = $manager->read($framePath)->resize(width: $bgImage->width(), height: $bgImage->height());
+        $bgImage->place($frameImage, 'bottom');
+
+
+        $filename = 'combined_' . $backgroundId . '.jpg';
+        $tempPath = storage_path('app/public/temp/' . $filename);
+        $tempDir = storage_path('app/public/temp');
+        if (!File::exists($tempDir)) {
+            File::makeDirectory($tempDir, 0755, true);
+        }
+
+        $filename = 'khyatiDigiAds_' . $backgroundId . '.jpg';
+        $tempPath = $tempDir . '/' . $filename;
+
+        $bgImage->toJpeg(100)->save($tempPath);
+
+        return response()->download($tempPath)->deleteFileAfterSend(true);
+    }
 
 
 

@@ -40,8 +40,8 @@
                                     <img src="{{ asset('storage/' . $frame->image_path) }}" alt="PerAI-img2"
                                         style="position: absolute; bottom: 0; left: 0; width: 100%; height: auto;
                 border-radius: 3%; pointer-events: none; object-fit: cover;">
-                                    <img src="{{ asset('storage/' . $user_profile) }}" alt="PerAI-img2"
-                                        style="position: absolute; bottom: 0; right:-5; width: 100px; pointer-events: none; object-fit: contain;">
+                                    {{-- <img src="{{ asset('storage/' . $user_profile) }}" alt="PerAI-img2"
+                                        style="position: absolute; bottom: 0; right:-5; width: 100px; pointer-events: none; object-fit: contain;"> --}}
                                 </div>
                                 <p class="olivia-name" style="border-top: 1px solid #6218FF; margin-top: 5px;">
                                     {{ $background->title ?? 'Title' }}</p>
@@ -130,8 +130,8 @@
                                     <img src="{{ asset('storage/' . $frame->image_path) }}" alt="PerAI-img2"
                                         style="position: absolute; bottom: 0; left: 0; width: 100%; height: auto;
                 border-radius: 3%; pointer-events: none; object-fit: cover;">
-                                    <img src="{{ asset('storage/' . $user_profile) }}" alt="PerAI-img2"
-                                        style="position: absolute; bottom: 0; right:-5; width: 100px; pointer-events: none; object-fit: contain;">
+                                    {{-- <img src="{{ asset('storage/' . $user_profile) }}" alt="PerAI-img2"
+                                        style="position: absolute; bottom: 0; right:-5; width: 100px; pointer-events: none; object-fit: contain;"> --}}
                                 </div>
                                 <p class="olivia-name" style="border-top: 1px solid #6218FF; margin-top: 5px;">
                                     {{ $background->title ?? 'Title' }}</p>
@@ -220,8 +220,8 @@
                                 <img src="{{ asset('storage/' . $frame->image_path) }}" alt="PerAI-img2"
                                     style="position: absolute; bottom: 0; left: 0; width: 100%; height: auto;
                 border-radius: 3%; pointer-events: none; object-fit: cover;">
-                                <img src="{{ asset('storage/' . $user_profile) }}" alt="PerAI-img2"
-                                    style="position: absolute; bottom: 0; right:-5; width: 100px; pointer-events: none; object-fit: contain;">
+                                {{-- <img src="{{ asset('storage/' . $user_profile) }}" alt="PerAI-img2"
+                                    style="position: absolute; bottom: 0; right:-5; width: 100px; pointer-events: none; object-fit: contain;"> --}}
                             </div>
                             <p class="olivia-name" style="border-top: 1px solid #6218FF; margin-top: 5px;">
                                 {{ $background->title ?? 'Title' }}</p>

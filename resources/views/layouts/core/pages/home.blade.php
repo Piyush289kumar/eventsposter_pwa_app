@@ -81,8 +81,8 @@
                 border-radius: 3%; pointer-events: none; object-fit: cover;">
 
 
-                        <img src="{{ asset('storage/' . $user_profile) }}" alt="PerAI-img2"
-                            style="position: absolute; bottom: 0; right:-5; width: 50px; pointer-events: none; object-fit: contain;">
+                        {{-- <img src="{{ asset('storage/' . $user_profile) }}" alt="PerAI-img2"
+                            style="position: absolute; bottom: 0; right:-5; width: 50px; pointer-events: none; object-fit: contain;"> --}}
                     </div>
                     <p class="olivia-name" style="border-top: 1px solid #6218FF; margin-top: 5px;">
                         {{ $background->title ?? 'Title' }}</p>
