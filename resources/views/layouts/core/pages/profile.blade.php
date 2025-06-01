@@ -1,8 +1,8 @@
 @extends('layouts.core.app')
 @section('content')
-    <form id="profileForm" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <section class="section-main section-main-ver">
+    <section class="section-main section-main-ver">
+        <form id="profileForm" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="camera-main" style="display: flex; justify-content: center;">
                 <div class="circle-img-girl" style="height: 200px; width: 200px;">
                     <img class="profile-pic"
@@ -28,21 +28,12 @@
                     <input type="text" id="name" placeholder="Your Name" name="name" value="{{ $user->name }}">
                 </div>
             </div>
-            {{-- <div class="inpt-la-main">
-                <label for="email" class="sign-text-nam">Email</label>
-                <div class="sign-input-main">
-                    <div class="media-icons-lets">
-                        <img src="{{ asset('assets/images/svg/email.svg') }}" alt="email">
-                    </div>
-                    <input type="email" id="email" placeholder="Email Address" name="email"
-                        value="{{ $user->email }}">
-                </div>
-            </div> --}}
-        </section>
-        <div class="button-main Verify-btn">
-            <button type="submit" class="main-bg-color-btn" style="width: 100%; padding: 10px; font-weight: 750;">Update Changes</button>
-        </div>
-    </form>
+            <div class="button-main Verify-btn" style="bottom: 70px;">
+                <button type="submit" class="main-bg-color-btn"
+                    style="width: 100%; padding: 10px; font-weight: 750;">Update Changes</button>
+            </div>
+        </form>
+    </section>
 @endsection
 @section('scripts')
     <script>

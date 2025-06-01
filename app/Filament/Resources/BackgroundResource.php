@@ -78,14 +78,15 @@ class BackgroundResource extends Resource
                                     ->imageEditor()
                                     ->helperText('Recommended size: 640 x 680px. Max file size: 2MB.'),
 
-                                Forms\Components\FileUpload::make('video_path')
+                                    Forms\Components\FileUpload::make('video_path')
                                     ->label('Background Video')
                                     ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/quicktime', '.mp4', '.mpeg', '.mov'])
-                                    ->maxSize(5120) // 5MB in KB
+                                    ->maxSize(102400) // 10MB
                                     ->directory('backgrounds/videos')
                                     ->visibility('public')
-                                    ->helperText('Supported formats: MP4, MPEG, MOV. Max file size: 5MB.')                                    
+                                    ->helperText('Supported formats: MP4, MPEG, MOV. Max file size: 10MB.')
                                     ->columnSpanFull(),
+
 
                             ]),
                     ]),

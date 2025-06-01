@@ -4,7 +4,6 @@
         .grayscale-img {
             filter: grayscale(100%);
         }
-
         .disabled-link {
             pointer-events: none;
             opacity: 0.6;
@@ -48,17 +47,6 @@
                                 <p class="olivia-name" id="time-left-{{ $background->id }}" style="color:#E83F25;">
                                     Time left to delete: calculating...
                                 </p>
-
-
-
-
-
-
-
-
-
-
-
                                 <div class="play-btn-selct-btn-main" style="align-items: start;">
                                     <!-- Caption Toggle Button -->
                                     <div class="button-main select" style="width: 35%;">
@@ -67,7 +55,6 @@
                                             <span class="music-graph" style="font-weight: 700; width: 100%;">Caption</span>
                                         </button>
                                     </div>
-
                                     <!-- Download Toggle Button -->
                                     <div class="button-main select" style="width: 65%;">
                                         <button type="button" class="main-bg-color-btn toggle-download-btn p-2"
@@ -76,7 +63,6 @@
                                         </button>
                                     </div>
                                 </div>
-
                                 <!-- Caption Box -->
                                 <div id="caption-box-{{ $background->id }}"
                                     class="caption-box main-bg-color-btn bg-black p-2"
@@ -90,45 +76,27 @@
                                         </button>
                                     </div>
                                 </div>
-
                                 <!-- Download Box -->
                                 <div id="download-box-{{ $background->id }}" class="download-box main-bg-color-btn p-2"
                                     style="display: none; padding: 10px; background: #fff; border: 1px solid #ccc; margin-top: 5px;">
                                     <div style="display: flex; justify-content: center; gap: 10px;">
                                         <a href="{{ route('download.combined.poster', $background->id) }}"
                                             class="main-bg-color-btn px-5 py-2" style="font-weight: 700;">
-                                            🖼️ Poster Download
+                                            🖼️ Poster
                                         </a>
-
-
                                         @if ($background->video_path)
                                             <a href="{{ route('download.combined.poster.video', $background->id) }}"
                                                 class="main-bg-color-btn px-5 py-2" style="font-weight: 700;">
-                                                🎥 Video Download
+                                                🎥  Reel
                                             </a>
                                         @else
                                             <button class="main-bg-color-btn btn btn-secondary" style="font-weight: 700;"
                                                 disabled>
-                                                🚫 No Video Available
+                                                🚫 No Reel
                                             </button>
                                         @endif
-
-
-
                                     </div>
                                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
                             </div>
                         @endforeach
                     @else
@@ -168,8 +136,6 @@
                                 <p class="olivia-name" id="time-left-{{ $background->id }}" style="color:#E83F25;">
                                     Time left to delete: calculating...
                                 </p>
-
-
                                 <div class="play-btn-selct-btn-main" style="align-items: start;">
                                     <!-- Caption Toggle Button -->
                                     <div class="button-main select" style="width: 35%;">
@@ -179,7 +145,6 @@
                                                 style="font-weight: 700; width: 100%;">Caption</span>
                                         </button>
                                     </div>
-
                                     <!-- Download Toggle Button -->
                                     <div class="button-main select" style="width: 65%;">
                                         <button type="button" class="main-bg-color-btn toggle-download-btn p-2"
@@ -188,7 +153,6 @@
                                         </button>
                                     </div>
                                 </div>
-
                                 <!-- Caption Box -->
                                 <div id="caption-box-{{ $background->id }}"
                                     class="caption-box main-bg-color-btn bg-black p-2"
@@ -202,31 +166,25 @@
                                         </button>
                                     </div>
                                 </div>
-
                                 <!-- Download Box -->
                                 <div id="download-box-{{ $background->id }}" class="download-box main-bg-color-btn p-2"
                                     style="display: none; padding: 10px; background: #fff; border: 1px solid #ccc; margin-top: 5px;">
                                     <div style="display: flex; justify-content: center; gap: 10px;">
                                         <a href="{{ route('download.combined.poster', $background->id) }}"
                                             class="main-bg-color-btn px-5 py-2" style="font-weight: 700;">
-                                            🖼️ Poster Download
+                                            🖼️ Poster
                                         </a>
-
-
                                         @if ($background->video_path)
                                             <a href="{{ route('download.combined.poster.video', $background->id) }}"
                                                 class="main-bg-color-btn px-5 py-2" style="font-weight: 700;">
-                                                🎥 Video Download
+                                                🎥  Reel
                                             </a>
                                         @else
                                             <button class="main-bg-color-btn btn btn-secondary" style="font-weight: 700;"
                                                 disabled>
-                                                🚫 No Video Available
+                                                🚫 No Reel
                                             </button>
                                         @endif
-
-
-
                                     </div>
                                 </div>
                             </div>
@@ -265,8 +223,6 @@
                             <p class="olivia-name" id="time-left-{{ $background->id }}" style="color:#E83F25;">
                                 Time left to delete: calculating...
                             </p>
-
-
                             <div class="play-btn-selct-btn-main" style="align-items: start;">
                                 <!-- Caption Toggle Button -->
                                 <div class="button-main select" style="width: 35%;">
@@ -275,7 +231,6 @@
                                         <span class="music-graph" style="font-weight: 700; width: 100%;">Caption</span>
                                     </button>
                                 </div>
-
                                 <!-- Download Toggle Button -->
                                 <div class="button-main select" style="width: 65%;">
                                     <button type="button" class="main-bg-color-btn toggle-download-btn p-2"
@@ -284,7 +239,6 @@
                                     </button>
                                 </div>
                             </div>
-
                             <!-- Caption Box -->
                             <div id="caption-box-{{ $background->id }}"
                                 class="caption-box main-bg-color-btn bg-black p-2"
@@ -298,31 +252,25 @@
                                     </button>
                                 </div>
                             </div>
-
                             <!-- Download Box -->
                             <div id="download-box-{{ $background->id }}" class="download-box main-bg-color-btn p-2"
                                 style="display: none; padding: 10px; background: #fff; border: 1px solid #ccc; margin-top: 5px;">
                                 <div style="display: flex; justify-content: center; gap: 10px;">
                                     <a href="{{ route('download.combined.poster', $background->id) }}"
                                         class="main-bg-color-btn px-5 py-2" style="font-weight: 700;">
-                                        🖼️ Poster Download
+                                        🖼️ Poster
                                     </a>
-
-
                                     @if ($background->video_path)
                                         <a href="{{ route('download.combined.poster.video', $background->id) }}"
                                             class="main-bg-color-btn px-5 py-2" style="font-weight: 700;">
-                                            🎥 Video Download
+                                            🎥  Reel
                                         </a>
                                     @else
                                         <button class="main-bg-color-btn btn btn-secondary" style="font-weight: 700;"
                                             disabled>
-                                            🚫 No Video Available
+                                            🚫 No Reel
                                         </button>
                                     @endif
-
-
-
                                 </div>
                             </div>
                         </div>
@@ -342,7 +290,6 @@
         const container = document.getElementById('capture-' + id);
         const downloadBtn = container.closest('.ai-voice-car-main').querySelector('.main-bg-color-btn');
         const images = container.querySelectorAll('img');
-
         function updateTime() {
             const created = new Date(createdAt);
             const expiry = new Date(created.getTime() + 3 * 24 * 60 * 60 * 1000); // +3 days
@@ -378,7 +325,6 @@
         @endforeach
     });
 </script> --}}
-
 <script>
     function getTimeLeftToDelete(id, createdAt) {
         const element = document.getElementById('time-left-' + id);
@@ -389,16 +335,13 @@
         const downloadLinks = downloadBox ? downloadBox.querySelectorAll('a') : [];
         const fallbackButtons = downloadBox ? downloadBox.querySelectorAll('button') : [];
         const images = container ? container.querySelectorAll('img') : [];
-
         function updateTime() {
             const created = new Date(createdAt);
             const expiry = new Date(created.getTime() + 3 * 24 * 60 * 60 * 1000); // +3 days
             const now = new Date();
             const diff = expiry - now;
-
             if (diff <= 0) {
                 if (element) element.innerText = "Image Expired.";
-
                 // Disable both Caption and Download toggle buttons
                 [captionBtn, downloadBtn].forEach(btn => {
                     if (btn) {
@@ -408,7 +351,6 @@
                         btn.style.pointerEvents = 'none';
                     }
                 });
-
                 // Hide or disable download box content
                 if (downloadBox) {
                     downloadBox.style.display = 'none';
@@ -424,15 +366,12 @@
                         btn.style.opacity = 0.5;
                     });
                 }
-
                 // Grayscale images
                 images.forEach(img => {
                     img.classList.add('grayscale-img');
                 });
-
                 return;
             }
-
             // Show time left
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -442,11 +381,9 @@
                 element.innerText = `Time left to delete: ${days}d ${hours}h ${minutes}m ${seconds}s`;
             }
         }
-
         updateTime();
         setInterval(updateTime, 1000);
     }
-
     document.addEventListener('DOMContentLoaded', function() {
         @foreach ($todayBackgrounds as $background)
             getTimeLeftToDelete({{ $background->id }}, '{{ $background->event_date }}');
@@ -459,8 +396,6 @@
         @endforeach
     });
 </script>
-
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Toggle boxes (Caption and Download)
@@ -473,7 +408,6 @@
                 }
             });
         });
-
         // Copy caption functionality
         document.querySelectorAll('.copy-caption-btn').forEach(copyBtn => {
             copyBtn.addEventListener('click', function() {
