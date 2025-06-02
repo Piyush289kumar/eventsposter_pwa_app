@@ -44,7 +44,16 @@
                     <hr>
                     <p>आपका खाता अभी तक सक्रिय नहीं है। <br>
                         सेवा का पूरा लाभ उठाने के लिए कृपया पहले अपना खाता सक्रिय करें।</p>
-                    <p>हमसे संपर्क करें: 94795 90611</p>
+
+                    <p style="background: #fff; color:#000; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px;"
+                        class="p-2 mt-3">
+                        <span style="font-weight: 600;">हमसे संपर्क करें:</span>
+                        <a href="tel:9479590611" style="text-decoration: none; font-weight: 900;"
+                            class="btn btn-success text-white">
+                            📞 94795 90611
+                        </a>
+                    </p>
+
                     <hr>
 
                     <p style="font-size: 16px; font-weight: 600;">🏆 सक्रिय करने के बाद आपको क्या मिलेगा: <br>
