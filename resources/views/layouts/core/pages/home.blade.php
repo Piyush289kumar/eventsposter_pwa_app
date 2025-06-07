@@ -20,7 +20,7 @@
                     <img src="assets/images/home-screen/crown.png" alt="crown">
                 </div>
                 <h1 class="toPro">Upgrade to Pro!</h1>
-                <p class="njoy">Enjoy all benefits without any restrictions.</p>
+                <p class="njoy">Unlock complete benefits with exclusive extras!</p>
             </div>
             <div class="heek">
                 <a href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20in%20upgrading%20to%20the%20Premium%20Tier.%20Please%20share%20details%20and%20pricing."
@@ -40,31 +40,52 @@
                 </div>
                 <div class="bg-danger px-3 py-3 mt-3"
                     style="border-radius: 28px; color: #fff; font-size: 18px; font-weight: 800;">
-                    <p>नमस्ते {{ $user->name }} जी</p>
+                    <p>नमस्कार {{ $user->name }} जी</p>
                     <hr>
-                    <p>आपका खाता अभी तक सक्रिय नहीं है। <br>
-                        सेवा का पूरा लाभ उठाने के लिए कृपया पहले अपना खाता सक्रिय करें।</p>
+                    <p>सर्वश्रेष्ठ Daily Poster App - KD Digi Ad में आपका हार्दिक स्वागत हैं।</p>
 
-                    <p style="background: #fff; color:#000; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px;"
-                        class="p-2 mt-3">
-                        <span style="font-weight: 600;">हमसे संपर्क करें:</span>
-                        <a href="tel:9479590611" style="text-decoration: none; font-weight: 900;"
-                            class="btn btn-success text-white">
-                            📞 94795 90611
-                        </a>
-                    </p>
+                    <div style="background: #fff; color:#000; border-radius: 12px; padding-bottom: 10px;">
+
+
+
+                        <p style="background: #fff; color:#000; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 10px;"
+                            class="p-2 mt-3">
+                            <span style="font-weight: 600; text-align: center;">कृपया सर्विस स्टार्ट करने हेतु
+                                <br>हमसे संपर्क करें: 94795-90611</span>
+
+
+                        <div style="display: flex; justify-content: center; align-items: center; gap: 15px;">
+                            <!-- Phone -->
+                            <a href="tel:9479590611" class="btn btn-success text-white"
+                                style="font-weight: 600; display: flex; align-items: center; gap: 5px;">
+                                📞 Call
+                            </a>
+
+                            <!-- WhatsApp -->
+                            <a href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20in%20upgrading%20to%20the%20Premium%20Tier.%20Please%20share%20details%20and%20pricing."
+                                class="btn btn-success text-white"
+                                style="font-weight: 600; display: flex; align-items: center; gap: 5px;" target="_blank">
+                                💬 WhatsApp
+                            </a>
+                        </div>
+                        <span style="font-weight: bold;"></span>
+
+                        </p>
+
+                    </div>
+
 
                     <hr>
 
-                    <p style="font-size: 16px; font-weight: 600;">🏆 सक्रिय करने के बाद आपको क्या मिलेगा: <br>
+                    <p style="font-size: 18px; font-weight: 600;">🏆 सक्रिय करने के बाद आपको क्या मिलेगा: <br>
 
-                        📅 आज का विशेष पोस्टर (Today's Poster) <br>
+                    <ul>
+                        <li>📅 हर दिन का पोस्ट</li>
+                        <li>🖼️ नए-नए फ्रेम स्टाइल</li>
+                        <li>🎨 पोस्ट के साथ सुन्दर Captions + Hashtag</li>
+                        <li>📨 और भी बहुत कुछ</li>
+                    </ul>
 
-                        🖼️ फ्रेम और टेम्पलेट्स की पूरी लाइब्रेरी <br>
-
-                        🎨 हाई-क्वालिटी डाउनलोड विकल्प <br>
-
-                        📨 कस्टम डिज़ाइन सेवाएँ और ज्यादा</p>
                 </div>
             </div>
         @endif
@@ -76,8 +97,15 @@
                 <div class="tran-icons">
                     <img src="assets/images/svg/message.svg" alt="message">
                 </div>
-                <h2 class="speechAi">Online Marketing</h2>
-                <p class="stunni">Boost your digital presence and connect with your audience.</p>
+                <h2 class="speechAi">Promote Your Business</h2>
+                <p class="stunni">
+                <ul style="font-size: 14px; font-weight: 700;">
+                    <li>- Lead Generation</li>
+                    <li>- Business Page Setup</li>
+                    <li>- Instagram & FB Ads</li>
+                    <li>- Company Promotion</li>
+                </ul>
+                </p>
 
                 <div class="button-main start-btn">
                     <a href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20in%20Online%20Marketing%20services.%20Please%20share%20more%20details.%20%0ABoost%20your%20digital%20presence%20and%20connect%20with%20your%20audience."
@@ -88,8 +116,15 @@
                 <div class="tran-icons">
                     <img src="assets/images/svg/translate.svg" alt="translate">
                 </div>
-                <h2 class="speechAi">Launch Your Website Today</h2>
-                <p class="stunni">Transform your vision into a live digital presence.</p>
+                <h2 class="speechAi">Launch Your App</h2>
+                <p class="stunni">
+                <ul style="font-size: 14px; font-weight: 700;">
+                    <li>- Website Development</li>
+                    <li>- Software Development</li>
+                    <li>- Andriod Development</li>
+                    <li>- IOS Development</li>
+                </ul>
+                </p>
                 <div class="button-main start-btn">
                     <a href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20in%20the%20%E2%82%B9%204999%2F-%20Website%20Package.%20Please%20share%20more%20details%20about%20%22Launch%20Your%20Website%20Today%22%20-%20Transform%20your%20vision%20into%20a%20live%20digital%20presence."
                         class="main-bg-color-btn">₹ 4999/-</a>

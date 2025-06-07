@@ -32,7 +32,7 @@
                             <div class="friend-select">
                                 {{-- <label class="custom-radio-sel-friend" for="select-friend1">Active</label> --}}
 
-                                <form action="{{ route('profile.frames.update') }}" method="POST">
+                                <form ac    tion="{{ route('profile.frames.update') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="frame_id" value="{{ $frame->id }}">
                                     <button type="submit" class="custom-radio-sel-friend btn btn-sm" style="{{ $user->frame_id == $frame->id ? 'background: #6218FF; color:#fff' : '' }}">
@@ -45,7 +45,7 @@
                 @endforeach
             @else
                 <div class="alert alert-info text-center">
-                    No Footer Frames.
+                    No Frames.
                 </div>
             @endif
         </div>
