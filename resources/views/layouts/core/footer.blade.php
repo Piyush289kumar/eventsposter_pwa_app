@@ -28,28 +28,36 @@
         <span class="nav-text">Posters</span>
     </a>
 
-  <a href="{{ route('profile.frames.show') }}" class="nav-item {{ request()->routeIs('profile.frames.show') ? 'active' : '' }}">
-    <svg class="material-icons search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <!-- Main frame structure (full opacity) -->
-        <path d="M4.9984 2H2V4.9984H4.9984V2Z" stroke="#0F0F0F" stroke-width="1.5" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M4.9984 19H2V21.9984H4.9984V19Z" stroke="#0F0F0F" stroke-width="1.5" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M21.9974 2.00195H18.999V5.00035H21.9974V2.00195Z" stroke="#0F0F00F" stroke-width="1.5" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M21.9974 19.002H18.999V22.0004H21.9974V19.002Z" stroke="#0F0F0F" stroke-width="1.5" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        
-        <!-- Secondary elements (40% opacity) -->
-        <g opacity="0.4">
-            <path d="M4.99854 3.50098H18.9987" stroke="#0F0F0F" stroke-width="1.5" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M3.5 4.99854V19.0005" stroke="#0F0F0F" stroke-width="1.35" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M20.4978 5V19.002" stroke="#0F0F0F" stroke-width="1.35" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M4.99854 20.501H18.9987" stroke="#0F0F0F" stroke-width="1.5" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </g>
-        
-        <!-- Central diamond (full opacity) -->
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.9966 15.002L7.99658 8.00195L14.9966 11.002L11.9986 12.0009L10.9966 15.002Z" stroke="#0F0F0F" stroke-width="1.5" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.999 12.002L14.997 15.002L11.999 12.002Z" stroke="#0F0F0F" stroke-width="1.5" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    <span class="nav-text">Frames</span>
-</a>
+    <a href="{{ route('profile.frames.show') }}"
+        class="nav-item {{ request()->routeIs('profile.frames.show') ? 'active' : '' }}">
+        <svg class="material-icons search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            fill="none" viewBox="0 0 24 24">
+            <!-- Corner blocks (full opacity) -->
+            <path d="M3 3H6V6H3V3Z" stroke="#0F0F0F" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            <path d="M18 3H21V6H18V3Z" stroke="#0F0F0F" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            <path d="M3 18H6V21H3V18Z" stroke="#0F0F0F" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            <path d="M18 18H21V21H18V18Z" stroke="#0F0F0F" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+
+            <!-- Frame border (40% opacity) -->
+            <g opacity="0.4">
+                <path d="M6 4.5H18" stroke="#0F0F0F" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M4.5 6V18" stroke="#0F0F0F" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M19.5 6V18" stroke="#0F0F0F" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M6 19.5H18" stroke="#0F0F0F" stroke-width="1.5" stroke-linecap="round" />
+            </g>
+
+            <!-- Center icon (stylized diamond or pointer) -->
+            <path d="M12 8L14.5 12L12 16L9.5 12L12 8Z" stroke="#0F0F0F" stroke-width="1.5" stroke-linejoin="round"
+                fill="none" />
+        </svg>
+        <span class="nav-text">Frames</span>
+
+    </a>
+
     <a href="{{ route('account') }}" class="nav-item {{ request()->routeIs('account') ? 'active' : '' }}">
         <svg class="material-icons person-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             viewBox="0 0 24 24" fill="none">

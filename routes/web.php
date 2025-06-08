@@ -31,6 +31,7 @@ Route::middleware([
     Route::get('/logoutcore', [PageController::class, 'logout'])->name('logoutcore');
     Route::get('/account', [PageController::class, 'account'])->name('account');
     Route::get('/invite-friends', [PageController::class, 'invite'])->name('invite');
+    Route::get('/plans', [PageController::class, 'plans'])->name('plans');
     Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact');
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');

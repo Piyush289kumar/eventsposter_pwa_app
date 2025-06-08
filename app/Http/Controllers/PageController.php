@@ -29,6 +29,15 @@ class PageController extends Controller
         return view('layouts.core.pages.invitefriends');
     }
 
+    public function plans()
+    {
+        $user = Auth::user(); // Get current logged-in user
+
+        return view('layouts.core.pages.plans', [
+            'user' => $user,
+        ]);
+    }
+
 }
 
 

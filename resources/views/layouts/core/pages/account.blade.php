@@ -27,11 +27,10 @@
                 <p class="njoy">Enjoy all benefits without any restrictions.</p>
             </div>
             <div class="heek">
-                <a href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20in%20upgrading%20to%20the%20Premium%20Tier.%20Please%20share%20details%20and%20pricing."
-                    class="upgradeNowButton">Upgrade Now</a>
+                <a href="{{ route('plans') }}" class="upgradeNowButton">Upgrade Now</a>
             </div>
         </div>
-        <a href="{{route('profile.frames.show')}}" class="home-setting-icons-main">
+        <a href="{{ route('profile.frames.show') }}" class="home-setting-icons-main">
             <div class="setting-opestion-main">
                 <div class="setting-icons-main">
                     <img src="assets/images/svg/security.svg" alt="security">
