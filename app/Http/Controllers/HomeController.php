@@ -23,7 +23,11 @@ class HomeController extends Controller
         $user_profile = $user->profile_photo_path;
 
         $backgrounds = Background::where('status', true)
-            ->where('user_category_id', $userCategoryId) // Filter by category
+            ->whereHas(
+                'categories',
+                fn($query) =>
+                $query->where('user_categories.id', $userCategoryId)
+            )
             ->orderBy('created_at', 'desc')
             ->paginate(2);
 

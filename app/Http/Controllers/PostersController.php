@@ -30,7 +30,7 @@ class PostersController extends Controller
 
         if (!$frame) {
             $frame = Frame::where('title', 'Default')->first();
-        }    
+        }
 
         $user_profile = $user->profile_photo_path;
 
@@ -39,24 +39,37 @@ class PostersController extends Controller
 
         // Filter today's backgrounds by user_category_id
         $todayBackgrounds = Background::where('status', true)
-            ->where('user_category_id', $userCategoryId)
+            ->whereHas(
+                'categories',
+                fn($query) =>
+                $query->where('user_categories.id', $userCategoryId)
+            )
             ->whereDate('event_date', $today)
             ->orderBy('created_at', 'desc')
             ->get();
 
         // Filter tomorrow's backgrounds
         $tomorrowBackgrounds = Background::where('status', true)
-            ->where('user_category_id', $userCategoryId)
+            ->whereHas(
+                'categories',
+                fn($query) =>
+                $query->where('user_categories.id', $userCategoryId)
+            )
             ->whereDate('event_date', $tomorrow)
             ->orderBy('created_at', 'desc')
             ->get();
 
         // Filter rest backgrounds (before today)
         $restBackgrounds = Background::where('status', true)
-            ->where('user_category_id', $userCategoryId)
+            ->whereHas(
+                'categories',
+                fn($query) =>
+                $query->where('user_categories.id', $userCategoryId)
+            )
             ->whereDate('event_date', '<', $today)
             ->orderBy('created_at', 'desc')
-            ->paginate(6);
+            ->limit(20)
+            ->get();
 
         return view('layouts.core.pages.posters', [
             'todayBackgrounds' => $todayBackgrounds,

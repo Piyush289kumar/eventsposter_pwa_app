@@ -283,9 +283,9 @@
                         </div>
                     @endforeach
                     {{-- Pagination links --}}
-                    <div class="pagination-wrapper w-full" style="display: flex; justify-content: center;">
+                    {{-- <div class="pagination-wrapper w-full" style="display: flex; justify-content: center;">
                         {{ $restBackgrounds->links('pagination::bootstrap-4') }}
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
