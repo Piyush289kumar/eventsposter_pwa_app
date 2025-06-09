@@ -44,6 +44,14 @@ class PageController extends Controller
         ]);
     }
 
+     public function privacy()
+    {
+        return view('layouts.core.pages.privacy');
+    }
+
+
+    
+
 }
 
 
