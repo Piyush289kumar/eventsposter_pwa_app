@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ad;
 use Illuminate\Http\Request;
 use App\Models\Background;
 use App\Models\Frame;
@@ -31,8 +32,12 @@ class HomeController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(2);
 
+        $ads = Ad::where('is_active', true)
+            ->orderBy('created_at', 'desc')
+            ->get();
 
-        return view('layouts.core.pages.home', compact('backgrounds', 'frame', 'user_profile', 'user'));
+
+        return view('layouts.core.pages.home', compact('backgrounds', 'frame', 'user_profile', 'user', 'ads'));
     }
 
 

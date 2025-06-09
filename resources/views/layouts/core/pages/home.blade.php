@@ -10,25 +10,69 @@
             opacity: 0.6;
             cursor: not-allowed;
         }
+
+        .ads-slider-wrapper {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 12px 0;
+        }
+
+        .ads-slider-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 20px;
+        }
+
+        .ad-box {
+            width: 78vw;
+            height: auto;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            border-radius: 12px;
+            padding: 12px;
+            color: white;
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+
+        .crown-main img {
+            width: 40px;
+        }
+
+        .toPro {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .njoy {
+            font-size: 14px;
+        }
     </style>
 @endsection
 @section('content')
     <section class="section-main section-main-ver-home">
         <div class="upgradePro-main-pro">
-            <div class="upgradePro-main">
-                <div class="crown-main">
-                    <img src="assets/images/home-screen/crown.png" alt="crown">
+            <div class="ads-slider-wrapper">
+                <div class="ads-slider-track" id="adsTrack">
+                    @foreach ($ads as $ad)
+                        <a href="{{ $ad->url }}" target="_blank" class="ad-box"
+                            style="background-image: url('{{ asset('storage/' . $ad->img) }}')">
+                            <div class="crown-main" style="background: none;">
+                                {{-- <img src="{{ asset('assets/images/home-screen/crown.png') }}" alt="crown"> --}}
+                            </div>
+                            <h1 class="toPro" style="color: transparent">{{ $ad->title }}</h1>
+                            <p class="njoy" style="color: transparent">Unlock complete benefits with exclusive extras!</p>
+                        </a>
+                    @endforeach
                 </div>
-                <h1 class="toPro">Upgrade to Pro!</h1>
-                <p class="njoy">Unlock complete benefits with exclusive extras!</p>
             </div>
             <div class="heek">
                 <a href="{{ route('plans') }}" class="upgradeNowButton">Upgrade Now</a>
             </div>
         </div>
-
-
-
         @if (!$user->category)
             <div class="trasnsBox-main_ mt-0 pt-0 mb-3">
                 <div class="trasnsBox speech-trans d-flex items-center" style="align-items: center">
@@ -42,24 +86,17 @@
                     <p>नमस्कार {{ $user->name }} जी</p>
                     <hr>
                     <p>सर्वश्रेष्ठ Daily Poster App - KD Digi Ad में आपका हार्दिक स्वागत हैं।</p>
-
                     <div style="background: #fff; color:#000; border-radius: 12px; padding-bottom: 10px;">
-
-
-
                         <p style="background: #fff; color:#000; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 10px;"
                             class="p-2 mt-3">
                             <span style="font-weight: 600; text-align: center;">कृपया सर्विस स्टार्ट करने हेतु
                                 <br>हमसे संपर्क करें: 94795-90611</span>
-
-
                         <div style="display: flex; justify-content: center; align-items: center; gap: 15px;">
                             <!-- Phone -->
                             <a href="tel:9479590611" class="btn btn-success text-white"
                                 style="font-weight: 600; display: flex; align-items: center; gap: 5px;">
                                 📞 Call
                             </a>
-
                             <!-- WhatsApp -->
                             <a href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20in%20upgrading%20to%20the%20Premium%20Tier.%20Please%20share%20details%20and%20pricing."
                                 class="btn btn-success text-white"
@@ -68,44 +105,34 @@
                             </a>
                         </div>
                         <span style="font-weight: bold;"></span>
-
                         </p>
-
                     </div>
-
-
                     <hr>
-
                     <p style="font-size: 18px; font-weight: 600;">🏆 सक्रिय करने के बाद आपको क्या मिलेगा: <br>
-
                     <ul>
                         <li>📅 हर दिन का पोस्ट</li>
                         <li>🖼️ नए-नए फ्रेम स्टाइल</li>
                         <li>🎨 पोस्ट के साथ सुन्दर Captions + Hashtag</li>
                         <li>📨 और भी बहुत कुछ</li>
                     </ul>
-
                 </div>
             </div>
         @endif
-
-
-
         <div class="trasnsBox-main">
             <div class="trasnsBox speech-trans">
                 <div class="tran-icons">
-                    <img src="assets/images/svg/message.svg" alt="message">
+                    <img src="assets/images/svg/crowen-sm.svg" alt="message">
                 </div>
-                <h2 class="speechAi">Promote Your Business</h2>
-                <p class="stunni">
-                <ul style="font-size: 14px; font-weight: 700;">
+                <h2 class="speechAi" style="font-size: 14px; font-weight: 900; line-height: 1;">Promote Your Business/Brand
+                </h2>
+                <p class="stunni mt-2">
+                <ul style="font-size: 11px; font-weight: 700;">
                     <li>- Lead Generation</li>
                     <li>- Business Page Setup</li>
                     <li>- Instagram & FB Ads</li>
                     <li>- Company Promotion</li>
                 </ul>
                 </p>
-
                 <div class="button-main start-btn">
                     <a href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20in%20Online%20Marketing%20services.%20Please%20share%20more%20details.%20%0ABoost%20your%20digital%20presence%20and%20connect%20with%20your%20audience."
                         class="main-bg-color-btn">₹ 3499/- </a>
@@ -113,11 +140,11 @@
             </div>
             <div class="trasnsBox voice-trans">
                 <div class="tran-icons">
-                    <img src="assets/images/svg/translate.svg" alt="translate">
+                    <img src="assets/images/svg/website-purpule.svg" alt="translate">
                 </div>
-                <h2 class="speechAi">Launch Your App</h2>
-                <p class="stunni">
-                <ul style="font-size: 14px; font-weight: 700;">
+                <h2 class="speechAi" style="font-size: 14px; font-weight: 900; line-height: 1;">Launch Your Website/App</h2>
+                <p class="stunni mt-2">
+                <ul style="font-size: 11px; font-weight: 700;">
                     <li>- Website Development</li>
                     <li>- Software Development</li>
                     <li>- Andriod Development</li>
@@ -137,13 +164,7 @@
                 <img src="assets/images/svg/viewallArrow.svg" alt="viewallArrow">
             </a>
         </div>
-
-
-
-
         <div class="AISlider">
-
-
             @foreach ($backgrounds as $background)
                 <div class="ai-voice-car-main mb-3" style="overflow: hidden; height: 310px;">
                     {{-- Image section to render and download --}}
@@ -153,12 +174,9 @@
                         <img src="{{ asset('storage/' . $background->image_path) }}" alt="PerAI-img1"
                             style="width: 100%; display: block; border-radius: 3%;">
                         {{-- Frame overlay image --}}
-
                         <img src="{{ asset('storage/' . $frame->image_path) }}" alt="PerAI-img2"
                             style="position: absolute; bottom: 0; left: 0; width: 100%; height: auto;
                 border-radius: 3%; pointer-events: none; object-fit: cover;">
-
-
                         {{-- <img src="{{ asset('storage/' . $user_profile) }}" alt="PerAI-img2"
                             style="position: absolute; bottom: 0; right:-5; width: 50px; pointer-events: none; object-fit: contain;"> --}}
                     </div>
@@ -171,7 +189,6 @@
                     </p>
                     <div class="play-btn-selct-btn-main" style="align-items: start;">
                         <!-- Caption Toggle Button -->
-
                         <!-- Download Toggle Button -->
                         <div class="button-main select" style="width: 100%;">
                             <a href="{{ route('posters') }}" class="main-bg-color-btn toggle-download-btn p-2"
@@ -182,8 +199,6 @@
                     </div>
                 </div>
             @endforeach
-
-
             {{-- <div class="ai-voice-car-main">
                 <div class="flg-main-like">
                     <img class="flag" src="assets/images/home-screen/flag3.jpg" alt="flag3">
@@ -371,17 +386,13 @@
                 <audio class="audio-player" src="assets/audio/music3.mp3"></audio>
             </div> --}}
         </div>
-
         <br>
         <br>
         <br>
         <br>
         <br>
-
-
     </section>
 @endsection
-
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script>
     function shareImage(elementId) {
@@ -425,12 +436,10 @@
     //         showToast('📥 Image downloaded successfully!');
     //     });
     // }
-
     function downloadImage(elementId) {
         const element = document.getElementById(elementId);
         html2canvas(element).then(canvas => {
             const dataUrl = canvas.toDataURL('image/png');
-
             if (window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
                 window.ReactNativeWebView.postMessage(dataUrl); // Send base64 image string to React Native
             } else {
@@ -443,7 +452,6 @@
             }
         });
     }
-
 
     function downloadBlob(blob, filename) {
         const url = URL.createObjectURL(blob);
@@ -521,5 +529,46 @@
         @foreach ($backgrounds as $background)
             getTimeLeftToDelete({{ $background->id }}, '{{ $background->event_date }}');
         @endforeach
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const track = document.getElementById("adsTrack");
+        const slides = document.querySelectorAll(".ad-box");
+        const slideCount = slides.length;
+        let index = 0;
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        function slideTo(index) {
+            const offset = index * (slides[0].offsetWidth + 20); // 20 is the gap
+            track.style.transform = `translateX(-${offset}px)`;
+        }
+        // Auto-slide every 5 seconds
+        setInterval(() => {
+            index = (index + 1) % slideCount;
+            slideTo(index);
+        }, 5000);
+        // Touch/drag swipe support
+        track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        });
+        track.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            currentX = e.touches[0].clientX;
+        });
+        track.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            const diff = startX - currentX;
+            if (diff > 50) {
+                index = Math.min(index + 1, slideCount - 1); // Swipe left
+            } else if (diff < -50) {
+                index = Math.max(index - 1, 0); // Swipe right
+            }
+            slideTo(index);
+            isDragging = false;
+        });
     });
 </script>
