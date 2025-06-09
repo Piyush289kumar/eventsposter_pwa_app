@@ -29,7 +29,7 @@
                 </p>
                 <div class="button-main start-btn">
                     <a href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20in%20the%20Monthly%20Subscription%20Plan%20%28%E2%82%B9%2049%2Fmonth%29."
-                        class="main-bg-color-btn">₹ 49/month</a>
+                        class="main-bg-color-btn">₹ 49/M</a>
                 </div>
             </div>
 
@@ -46,7 +46,7 @@
                 </p>
                 <div class="button-main start-btn">
                     <a href="https://wa.me/919479590611?text=Hi%2C%20I%20want%20to%20subscribe%20to%20the%203-Month%20Plan%20%28%E2%82%B9%20149%29."
-                        class="main-bg-color-btn">₹ 149 / 3 Months</a>
+                        class="main-bg-color-btn">₹ 149/ 3 M</a>
                 </div>
             </div>
 
@@ -63,7 +63,7 @@
                 </p>
                 <div class="button-main start-btn">
                     <a href="https://wa.me/919479590611?text=Hi%2C%20please%20enroll%20me%20in%20the%206-Month%20Subscription%20Plan%20%28%E2%82%B9%20249%29."
-                        class="main-bg-color-btn">₹ 249 / 6 Months</a>
+                        class="main-bg-color-btn">₹ 249 / 6 M</a>
                 </div>
             </div>
 
@@ -79,7 +79,7 @@
                 </p>
                 <div class="button-main start-btn">
                     <a href="https://wa.me/919479590611?text=Hi%2C%20I%20want%20to%20subscribe%20to%20the%20Yearly%20Plan%20%28%E2%82%B9%20346%29.%20Please%20share%20more%20details."
-                        class="main-bg-color-btn">₹ 346 / Year</a>
+                        class="main-bg-color-btn">₹ 346 / Y</a>
                 </div>
             </div>
         </div>

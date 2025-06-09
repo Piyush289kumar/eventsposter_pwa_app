@@ -16,7 +16,22 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/media_query.css">
 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+
+    <!-- Prevent text selection to discourage copying -->
+    <style>
+        body {
+            -webkit-user-select: none !important;
+            /* Safari */
+            -moz-user-select: none !important;
+            /* Firefox */
+            -ms-user-select: none !important;
+            /* IE10+ */
+            user-select: none !important;
+            /* Standard */
+        }
+    </style>
+
     @yield('styles') <!-- Optional if you want to manage styles separately -->
 
 </head>
@@ -26,7 +41,8 @@
         <!-- ====================================== Preloader ===================================== -->
         <div class="page-loader" id="page-loader">
             <img src="assets/images/svg/logo.png" alt="logo" style="width: 200px;">
-            <p class="loade-text" style="font-size: 40px;" data-text="{{ config('app.name', 'Laravel') }}">{{ config('app.name', 'Laravel') }}</p>
+            <p class="loade-text" style="font-size: 40px;" data-text="{{ config('app.name', 'Laravel') }}">
+                {{ config('app.name', 'Laravel') }}</p>
         </div>
         <!-- ====================================== Header ===================================== -->
         @include('layouts.core.header')
@@ -80,6 +96,34 @@
     <script src="assets/javascript/audio-song-play.js"></script>
     <script src="assets/javascript/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+
+    <!-- Disable right click and block certain keyboard shortcuts -->
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (
+                (e.ctrlKey && (e.key === 'c' || e.key === 's' || e.key === 'u')) || // Ctrl+C, Ctrl+S, Ctrl+U
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || // Ctrl+Shift+I/J
+                e.key === 'PrintScreen' // PrintScreen key
+            ) {
+                e.preventDefault();
+                alert('Action disabled for security reasons.');
+            }
+        });
+
+        // Blur the screen when user switches window (to deter screenshots)
+        window.addEventListener('blur', () => {
+            document.body.style.filter = 'blur(10px)';
+        });
+
+        window.addEventListener('focus', () => {
+            document.body.style.filter = 'none';
+        });
+    </script>
+    
     @yield('scripts') <!-- Needed for custom page scripts -->
 </body>
 
