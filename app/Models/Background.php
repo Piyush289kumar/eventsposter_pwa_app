@@ -11,8 +11,7 @@ class Background extends Model
 
     protected $fillable = [
         'title',
-        'image_path',
-        'video_path',
+        'image_path',        
         'event_date',
         'status',
         'is_premium',
@@ -25,8 +24,9 @@ class Background extends Model
         'is_premium' => 'boolean',
     ];
 
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(UserCategory::class, 'user_category_id');
+        return $this->belongsToMany(UserCategory::class, 'background_user_category');
     }
+
 }

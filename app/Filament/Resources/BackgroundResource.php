@@ -37,12 +37,22 @@ class BackgroundResource extends Resource
                                             ->required()
                                             ->columnSpanFull(),
 
-                                        Select::make('user_category_id')
-                                            ->label('Backgroud Group')
-                                            ->relationship('category', 'name') // matches the method name exactly
+                                        // Select::make('user_category_id')
+                                        //     ->label('Backgroud Group')
+                                        //     ->relationship('category', 'name') // matches the method name exactly
+                                        //     ->searchable()
+                                        //     // ->required()
+                                        //     ->preload(),
+
+
+                                        Forms\Components\Select::make('categories')
+                                            ->label('Background Groups')
+                                            ->multiple()
+                                            ->relationship('categories', 'name')
                                             ->searchable()
-                                            // ->required()
-                                            ->preload(),
+                                            ->preload()
+                                            ->required(),
+
 
                                         Forms\Components\Toggle::make('status')
                                             ->label('Active')
@@ -78,7 +88,7 @@ class BackgroundResource extends Resource
                                     ->imageEditor()
                                     ->helperText('Recommended size: 640 x 680px. Max file size: 2MB.'),
 
-                                    Forms\Components\FileUpload::make('video_path')
+                                Forms\Components\FileUpload::make('video_path')
                                     ->label('Background Video')
                                     ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/quicktime', '.mp4', '.mpeg', '.mov'])
                                     ->maxSize(102400) // 10MB
@@ -115,10 +125,11 @@ class BackgroundResource extends Resource
                     ->label('Premium')
                     ->boolean()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('category.name')
-                    ->label('Group')
-                    ->sortable()
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('categories')
+                    ->label('Groups')
+                    ->getStateUsing(fn($record) => $record->categories->pluck('name')->join(', '))
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

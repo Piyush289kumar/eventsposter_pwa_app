@@ -10,4 +10,10 @@ class UserCategory extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function backgrounds()
+    {
+        return $this->belongsToMany(Background::class, 'background_user_category');
+    }
+
 }
