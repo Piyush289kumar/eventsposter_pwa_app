@@ -9,6 +9,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
+Route::get('/privacy', [PageController::class, 'privacy'])->name('privacy');
+Route::get('/child-safety-policy', [PageController::class, 'childprivacy'])->name('childprivacy');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -33,7 +36,7 @@ Route::middleware([
     Route::get('/invite-friends', [PageController::class, 'invite'])->name('invite');
     Route::get('/plans', [PageController::class, 'plans'])->name('plans');
     Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact');
-    Route::get('/privacy', [PageController::class, 'privacy'])->name('privacy');
+
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
