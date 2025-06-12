@@ -3,7 +3,8 @@
         <x-slot name="logo">
             {{-- <x-authentication-card-logo /> --}}
             <img src="{{ asset('assets/images/svg/logo.png') }}" alt="Logo" style="width: 120px; margin: auto;">
-            <p class="loade-text" style="font-size: 40px; font-weight: 700;" data-text="{{ config('app.name', 'Laravel') }}">{{ config('app.name', 'Laravel') }}</p>
+            <p class="loade-text" style="font-size: 40px; font-weight: 700;"
+                data-text="{{ config('app.name', 'Laravel') }}">{{ config('app.name', 'Laravel') }}</p>
         </x-slot>
 
         <x-validation-errors class="mb-4" />
@@ -16,6 +17,18 @@
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
+
+            <div style="display: flex; flex-direction: column; justify-content: center; gap:20px; text-align: center;">
+
+                <a href="{{ route('google.login') }}" class="border border-dark rounded-3 px-3 py-3"
+                    style="display:flex; border-radius: 18px; flex-direction: row; justify-content: center; align-items: center;">
+                    <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo"
+                        style="height: 30px;" class="me-2">
+                    <span class="flex-grow-1 text-center">Login with Google</span>
+                </a>
+                <h4 style="font-weight: 800;">OR</h4>
+
+            </div>
 
             <div>
                 <x-label for="email" value="{{ __('Email') }}" />
@@ -49,11 +62,17 @@
                 </x-button>
             </div>
 
+
+
+
+
+
             <div style="display: flex; flex-direction: column; justify-content: center; margin-top: 20px;">
                 <hr>
                 <br>
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    href="{{ route('register') }}" {{-- href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20for%20account%20registration.%20Please%20share%20details%20and%20pricing." --}} style="text-align: center; padding-top: 10px;">
+                    href="{{ route('register') }}" {{-- href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20for%20account%20registration.%20Please%20share%20details%20and%20pricing." --}}
+                    style="text-align: center; padding-top: 10px;">
                     Create a New Account
                 </a>
             </div>
