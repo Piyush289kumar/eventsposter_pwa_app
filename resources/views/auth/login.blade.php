@@ -18,7 +18,7 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <div style="display: flex; flex-direction: column; justify-content: center; gap:20px; text-align: center;">
+            {{-- <div style="display: flex; flex-direction: column; justify-content: center; gap:20px; text-align: center;">
 
                 <a href="{{ route('google.login') }}" class="border border-dark rounded-3 px-3 py-3"
                     style="display:flex; border-radius: 18px; flex-direction: row; justify-content: center; align-items: center;">
@@ -28,7 +28,19 @@
                 </a>
                 <h4 style="font-weight: 800;">OR</h4>
 
+            </div> --}}
+
+            <div
+                style="display: flex; flex-direction: column; justify-content: center; gap:20px; text-align: center; margin-bottom: 5px;">
+                <a href="{{ route('otp.login.form') }}" class="border border-dark rounded-3 px-3 py-3"
+                    style="display:flex; border-radius: 18px; flex-direction: row; justify-content: center; align-items: center;">
+                    <span style="font-size: 18px; background: #fff;  border-radius: 50%; margin-right: 10px;;">📞</span>
+                    <span class="flex-grow-1 text-center">Login with Phone Number</span>
+                </a>
+                <h4 style="font-weight: 800;">OR</h4>
             </div>
+
+
 
             <div>
                 <x-label for="email" value="{{ __('Email') }}" />
