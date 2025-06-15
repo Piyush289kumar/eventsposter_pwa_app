@@ -2,8 +2,8 @@
     <x-authentication-card>
         <x-slot name="logo">
             {{-- <x-authentication-card-logo /> --}}
-            <img src="{{ asset('assets/images/svg/logo.png') }}" alt="Logo" style="width: 120px; margin: auto;">
-            <p class="loade-text" style="font-size: 40px; font-weight: 700;"
+            <img src="{{ asset('assets/images/svg/logo.png') }}" alt="Logo" style="width: 80px; margin: auto;">
+            <p class="loade-text" style="font-size: 35px; font-weight: 900;"
                 data-text="{{ config('app.name', 'Laravel') }}">{{ config('app.name', 'Laravel') }}</p>
         </x-slot>
 
@@ -62,12 +62,12 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
+                {{-- @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
-                @endif
+                @endif --}}
 
                 <x-button class="ms-4">
                     {{ __('Log in') }}
@@ -83,7 +83,7 @@
                 <hr>
                 <br>
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    href="{{ route('register') }}" {{-- href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20for%20account%20registration.%20Please%20share%20details%20and%20pricing." --}}
+                    href="{{ route('otp.register.form') }}" {{-- href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20for%20account%20registration.%20Please%20share%20details%20and%20pricing." --}}
                     style="text-align: center; padding-top: 10px;">
                     Create a New Account
                 </a>

@@ -9,8 +9,8 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <img src="{{ asset('assets/images/svg/logo.png') }}" alt="Logo" style="width: 120px; margin: auto;">
-            <p class="loade-text" style="font-size: 40px; font-weight: 700;"
+            <img src="{{ asset('assets/images/svg/logo.png') }}" alt="Logo" style="width: 80px; margin: auto;">
+            <p class="loade-text" style="font-size: 35px; font-weight: 900;"
                 data-text="{{ config('app.name', 'Laravel') }}">{{ config('app.name', 'Laravel') }}</p>
         </x-slot>
         {{-- Global validation errors --}}
@@ -41,24 +41,16 @@
             {{-- Hidden field to preserve phone number --}}
             <input type="hidden" name="phone" value="{{ old('phone', session('phone')) }}">
             {{-- OTP input --}}
-            {{-- <div class="mt-4">
-                <x-label for="otp" value="{{ __('Enter OTP') }}" />
-                <x-input id="otp" class="block mt-1 w-full" type="text" name="otp" required autofocus
-                    autocomplete="off" />
-                @error('otp')
-                    <span class="text-red-600 text-sm">{{ $message }}</span>
-                @enderror
-            </div> --}}
             <div class="mt-4">
                 <x-label for="otp" value="{{ __('Enter OTP') }}" />
-                <div id="otp-group" class="flex space-x-2 mt-2">
+                <div id="otp-group" class="flex justify-center gap-2 mt-2">
                     @for ($i = 0; $i < 6; $i++)
-                        <input type="text" name="otp[]" maxlength="1"
-                            class="h-12 text-center border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg"
-                            style="width: 65px;"
-                            inputmode="numeric" pattern="[0-9]*" oninput="moveToNext(this, {{ $i }})" />
+                        <input type="text" name="otp[]" maxlength="1" inputmode="numeric" pattern="[0-9]*"
+                            class="h-12 text-center border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xl" style="width: 50px;"
+                            oninput="moveToNext(this, {{ $i }})" />
                     @endfor
                 </div>
+
                 <input type="hidden" id="otp" name="otp" />
                 @error('otp')
                     <span class="text-red-600 text-sm">{{ $message }}</span>
@@ -89,19 +81,19 @@
         </form>
     </x-authentication-card>
 </x-guest-layout>
-    <script>
-        function moveToNext(el, index) {
-            const inputs = document.querySelectorAll('#otp-group input');
-            if (el.value.length === 1 && index < inputs.length - 1) {
-                inputs[index + 1].focus();
-            }
-            // Reconstruct full OTP
-            let otp = '';
-            inputs.forEach(input => otp += input.value);
-            document.getElementById('otp').value = otp;
+<script>
+    function moveToNext(el, index) {
+        const inputs = document.querySelectorAll('#otp-group input');
+        if (el.value.length === 1 && index < inputs.length - 1) {
+            inputs[index + 1].focus();
         }
-        // Optional: Auto-focus first input on load
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelector('#otp-group input')?.focus();
-        });
-    </script>
+        // Reconstruct full OTP
+        let otp = '';
+        inputs.forEach(input => otp += input.value);
+        document.getElementById('otp').value = otp;
+    }
+    // Optional: Auto-focus first input on load
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('#otp-group input')?.focus();
+    });
+</script>

@@ -18,6 +18,10 @@ Route::get('/child-safety-policy', [PageController::class, 'childprivacy'])->nam
 Route::get('/phone-login', [OtpLoginController::class, 'showPhoneForm'])->name('otp.login.form');
 Route::post('/send-otp', [OtpLoginController::class, 'sendOtp'])->name('otp.send');
 
+Route::get('/otp/register', [OtpLoginController::class, 'showRegisterForm'])->name('otp.register.form');
+Route::post('/otp/register', [OtpLoginController::class, 'registerAfterOtp'])->name('otp.register');
+
+
 Route::get('/verify-otp', [OtpLoginController::class, 'showVerifyForm'])->name('otp.verify.form');
 Route::post('/verify-otp', [OtpLoginController::class, 'verifyOtp'])->name('otp.verify');
 
