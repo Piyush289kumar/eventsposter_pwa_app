@@ -30,7 +30,7 @@
             </div>
             <div class="button-main Verify-btn" style="bottom: 70px;">
                 <button type="submit" class="main-bg-color-btn"
-                    style="width: 100%; padding: 10px; font-weight: 750;">Update Changes</button>
+                    style="width: 94%; padding: 10px; font-weight: 750;">Update Changes</button>
             </div>
         </form>
     </section>
