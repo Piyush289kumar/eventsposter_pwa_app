@@ -7,11 +7,20 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\Auth\OtpLoginController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/privacy', [PageController::class, 'privacy'])->name('privacy');
 Route::get('/child-safety-policy', [PageController::class, 'childprivacy'])->name('childprivacy');
+
+
+Route::get('/phone-login', [OtpLoginController::class, 'showPhoneForm'])->name('otp.login.form');
+Route::post('/send-otp', [OtpLoginController::class, 'sendOtp'])->name('otp.send');
+
+Route::get('/verify-otp', [OtpLoginController::class, 'showVerifyForm'])->name('otp.verify.form');
+Route::post('/verify-otp', [OtpLoginController::class, 'verifyOtp'])->name('otp.verify');
+
 
 
 
