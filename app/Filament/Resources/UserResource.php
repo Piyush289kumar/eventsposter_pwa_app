@@ -38,6 +38,15 @@ class UserResource extends Resource
                             ->required()
                             ->maxLength(255),
 
+                        Forms\Components\TextInput::make('phone')
+                            ->label('Phone Number')
+                            ->required()
+                            ->minLength(10)
+                            ->maxLength(10)
+                            ->numeric()
+                            ->unique(ignoreRecord: true)
+                            ->rule('regex:/^[0-9]{10}$/'),
+
                         Forms\Components\TextInput::make('email')
                             ->email()
                             ->required()
@@ -108,6 +117,10 @@ class UserResource extends Resource
                     ->circular(),
 
                 Tables\Columns\TextColumn::make('name')
+                    ->searchable()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('phone')
                     ->searchable()
                     ->sortable(),
 
