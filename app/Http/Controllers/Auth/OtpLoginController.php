@@ -10,6 +10,7 @@ use App\Models\OtpVerification;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
+use Log;
 
 class OtpLoginController extends Controller
 {
@@ -18,32 +19,41 @@ class OtpLoginController extends Controller
         return view('auth.phone-login');
     }
 
+
     public function sendOtp(Request $request)
     {
-        $request->validate(['phone' => 'required|digits:10']);
+        $request->validate([
+            'phone' => 'required|digits:10',
+        ]);
 
         $otp = rand(100000, 999999);
 
         OtpVerification::updateOrCreate(
             ['phone' => $request->phone],
-            ['otp' => $otp, 'expires_at' => now()->addMinutes(5)]
+            [
+                'otp' => $otp,
+                'expires_at' => now()->addMinutes(10),
+            ]
         );
 
-        $authKey = "ba6aebc61a6642bffb7bcc96f42a890"; // example key
-        Http::get('http://msg.msgclub.net/rest/services/sendSMS/sendGroupSms', [
-            'AUTH_KEY' => $authKey,
-            'message' => "Your OTP is: $otp",
-            'senderId' => 'SMSCLUB',
-            'routeId' => 1,
-            'mobileNos' => $request->phone,
-            'smsContentType' => 'english',
-        ]);
+        $authKey = "ba6aebc61a6642bffb7bcc96f42a890";
+        $senderId = 'KHYTAD';
+        $routeId = 1;
+        $mobile = $request->phone;
+        $smsContentType = 'english';
 
-        return redirect()->route('otp.verify.form')->with([
-            'phone' => $request->phone,
-        ]);
+        $url = "http://msg.msgclub.net/rest/services/sendSMS/sendGroupSms?AUTH_KEY=$authKey&message=Dear Coustomer, Your OTP for login is $otp and it Will be Valid For 10 Mins - Khyati Digital-Khyati Digi ad&senderId=$senderId&routeId=$routeId&mobileNos=$mobile&smsContentType=$smsContentType";
+
+        // http://msg.msgclub.net/rest/services/sendSMS/sendGroupSms?AUTH_KEY=ba6aebc61a6642bffb7bcc96f42a890&message=Dear Coustomer, Your OTP for login is 886579 and it Will be Valid For 10 Mins - Khyati Digital-Khyati Digi ad&senderId=KHYTAD&routeId=1&mobileNos=8817762774&smsContentType=english
+
+        // Send GET request with full URL
+        $response = Http::get($url);
+
+        // Log the response
+        Log::info('OTP Response: ' . $response->body());
+
+        return redirect()->route('otp.verify.form')->with('phone', $request->phone);
     }
-
     public function showVerifyForm()
     {
         return view('auth.verify-otp');
