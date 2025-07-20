@@ -20,7 +20,7 @@ Route::get('/phone-login', [OtpLoginController::class, 'showPhoneForm'])->name('
 Route::post('/send-otp', [OtpLoginController::class, 'sendOtp'])->name('otp.send');
 
 Route::get('/otp/register', [OtpLoginController::class, 'showRegisterForm'])->name('otp.register.form');
-Route::post('/otp/register', [OtpLoginController::class, 'registerAfterOtp'])->name('otp.register');
+Route::post('/otp/register', [OtpLoginController::class, 'registerAfterOtp'])->name('otp.register' );
 
 
 Route::get('/verify-otp', [OtpLoginController::class, 'showVerifyForm'])->name('otp.verify.form');

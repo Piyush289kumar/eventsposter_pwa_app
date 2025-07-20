@@ -26,7 +26,7 @@
                 </p>
                 <div class="button-main start-btn">
                     <a href="https://wa.me/919479590611?text=Hi%2C%20I%20want%20to%20subscribe%20to%20the%20Yearly%20Plan%20%28%E2%82%B9%20346%29.%20Please%20share%20more%20details."
-                        class="main-bg-color-btn">₹ 346 / Year</a>
+                        class="main-bg-color-btn">₹ 349 / Year</a>
                 </div>
             </div>
             <!-- 6-Month Plan -->
@@ -70,7 +70,7 @@
                 </ul>
                 </p>
                 <div class="button-main start-btn">
-                    <a href="https://wa.me/919479590611?text=Hi%2C%20I%20am%20interested%20in%20the%20Monthly%20Subscription%20Plan%20%28%E2%82%B9%2049%2Fmonth%29."
+                    <a href="https://rzp.io/rzp/QxVkcH59"
                         class="main-bg-color-btn">₹ 49 for Month</a>
                 </div>
             </div>
