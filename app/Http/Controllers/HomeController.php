@@ -40,5 +40,11 @@ class HomeController extends Controller
         return view('layouts.core.pages.home', compact('backgrounds', 'frame', 'user_profile', 'user', 'ads'));
     }
 
+    public function webHome()
+    {
+
+        return view('layouts.web_home');
+    }
+
 
 }

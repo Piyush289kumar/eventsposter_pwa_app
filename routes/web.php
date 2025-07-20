@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\OtpLoginController;
 use Illuminate\Support\Facades\Route;
 
 
+Route::get('/', [HomeController::class, 'webHome'])->name('web.home');
 Route::get('/privacy', [PageController::class, 'privacy'])->name('privacy');
 Route::get('/child-safety-policy', [PageController::class, 'childprivacy'])->name('childprivacy');
 
@@ -29,6 +30,7 @@ Route::post('/verify-otp', [OtpLoginController::class, 'verifyOtp'])->name('otp.
 Route::get('auth/google', [GoogleController::class, 'redirect'])->name('google.login');
 Route::get('auth/google/callback', [GoogleController::class, 'callback']);
 
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -36,7 +38,7 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function () {
         // return view('dashboard');
-        return redirect('/');
+        return redirect('/core');
     })->name('dashboard');
 
 
@@ -44,7 +46,7 @@ Route::middleware([
     //     return view('layouts.core.pages.home');
     // })->name('home');
 
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/core', [HomeController::class, 'index'])->name('home');
 
 
     Route::get('/about-us', [PageController::class, 'about'])->name('about');
