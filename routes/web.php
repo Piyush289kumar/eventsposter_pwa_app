@@ -8,6 +8,7 @@ use App\Http\Controllers\PostersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\OtpLoginController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -53,8 +54,13 @@ Route::middleware([
     Route::get('/logoutcore', [PageController::class, 'logout'])->name('logoutcore');
     Route::get('/account', [PageController::class, 'account'])->name('account');
     Route::get('/invite-friends', [PageController::class, 'invite'])->name('invite');
-    Route::get('/plans', [PageController::class, 'plans'])->name('plans');
     Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact');
+
+    Route::get('/plans', [SubscriptionController::class, 'index'])->name('plans');
+    Route::post('/subscribe/{plan}', [SubscriptionController::class, 'subscribe'])->name('subscribe.plan');
+    Route::post('/razorpay/callback', [SubscriptionController::class, 'callback'])->name('razorpay.callback');
+
+
 
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');

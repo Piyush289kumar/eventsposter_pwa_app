@@ -14,66 +14,66 @@
 @section('content')
     <section class="section-main section-main-ver-home">
         <div class="trasnsBox-mains mt-3">
-            <!-- Yearly Plan -->
-            <div class="trasnsBox voice-trans" style="margin-bottom: 15px;">
-                <h2 class="speechAi">Yearly Plan</h2>
-                <p class="stunni">
-                <ul style="font-size: 14px; font-weight: 700;">
-                    <li>- Best Value</li>
-                    <li>- Full Support & Updates</li>
-                    <li>- All Access Pass</li>
-                </ul>
-                </p>
-                <div class="button-main start-btn">
-                    <a href="https://wa.me/919479590611?text=Hi%2C%20I%20want%20to%20subscribe%20to%20the%20Yearly%20Plan%20%28%E2%82%B9%20346%29.%20Please%20share%20more%20details."
-                        class="main-bg-color-btn">₹ 349 / Year</a>
+            @foreach($plans as $plan)
+                @php
+                    $features = explode("\n", $plan->description); // List features from description
+                    $intervalText = match($plan->interval) {
+                        'monthly' => 'Month',
+                        '3_months' => '3 Months',
+                        '6_months' => '6 Months',
+                        'yearly' => 'Year',
+                        default => ucfirst($plan->interval),
+                    };
+                @endphp
+                <div class="trasnsBox voice-trans" style="margin-bottom: 15px;">
+                    <h2 class="speechAi">{{ $plan->name }}</h2>
+                    <ul style="font-size: 14px; font-weight: 700;">
+                        @foreach($features as $feature)
+                            <li>- {{ $feature }}</li>
+                        @endforeach
+                    </ul>
+                    <div class="button-main start-btn">
+                        <form method="POST" action="{{ route('subscribe.plan', $plan->id) }}">
+                            @csrf
+                            <button type="submit" class="main-bg-color-btn px-3 py-2">
+                                ₹ {{ number_format($plan->price) }} / {{ $intervalText }}
+                            </button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <!-- 6-Month Plan -->
-            <div class="trasnsBox speech-trans" style="margin-bottom: 15px;">
-                <h2 class="speechAi">6-Month Plan</h2>
-                <p class="stunni">
-                <ul style="font-size: 14px; font-weight: 700;">
-                    <li>- Extended Access</li>
-                    <li>- Lower Cost per Month</li>
-                    <li>- Premium Features</li>
-                </ul>
-                </p>
-                <div class="button-main start-btn">
-                    <a href="https://wa.me/919479590611?text=Hi%2C%20please%20enroll%20me%20in%20the%206-Month%20Subscription%20Plan%20%28%E2%82%B9%20249%29."
-                        class="main-bg-color-btn">₹ 249 for 6 Month</a>
-                </div>
-            </div>
-            <!-- 3-Month Plan -->
-            <div class="trasnsBox speech-trans" style="margin-bottom: 15px;">
-                <h2 class="speechAi">3-Month Plan</h2>
-                <p class="stunni">
-                <ul style="font-size: 14px; font-weight: 700;">
-                    <li>- Priority Support</li>
-                    <li>- Discounted Rate</li>
-                    <li>- Access to New Features</li>
-                </ul>
-                </p>
-                <div class="button-main start-btn">
-                    <a href="https://wa.me/919479590611?text=Hi%2C%20I%20want%20to%20subscribe%20to%20the%203-Month%20Plan%20%28%E2%82%B9%20149%29."
-                        class="main-bg-color-btn">₹ 149 for 3 Month</a>
-                </div>
-            </div>
-            <!-- Monthly Plan -->
-            <div class="trasnsBox speech-trans" style="margin-bottom: 15px;">
-                <h2 class="speechAi">Monthly Plan</h2>
-                <p class="stunni">
-                <ul style="font-size: 14px; font-weight: 700;">
-                    <li>- Unlimited Access</li>
-                    <li>- Email Support</li>
-                    <li>- Access to All Features</li>
-                </ul>
-                </p>
-                <div class="button-main start-btn">
-                    <a href="https://rzp.io/rzp/QxVkcH59"
-                        class="main-bg-color-btn">₹ 49 for Month</a>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 @endsection
+@if(isset($razorpay_key) && isset($subscription_id) && isset($user) && isset($plan))
+    @section('scripts')
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+            var options = {
+                key: '{{ $razorpay_key }}',
+                subscription_id: '{{ $subscription_id }}',
+                name: '{{ $user->name }}',
+                description: '{{ $plan->name }}',
+                handler: function (response){
+                    fetch('{{ route('razorpay.callback') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify(response)
+                    }).then(res => window.location.href = "/dashboard");
+                },
+                prefill: {
+                    name: '{{ $user->name }}',
+                    email: '{{ $user->email }}'
+                },
+                theme: {
+                    color: '#528FF0'
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        </script>
+    @endsection
+@endif
