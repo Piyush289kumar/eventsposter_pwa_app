@@ -51,7 +51,6 @@
 
         @yield('content')
 
-
         <!-- ====================================== Footer ===================================== -->
         @include('layouts.core.footer')
         <!-- ====================================== Setting Section ===================================== -->
@@ -115,9 +114,9 @@
         });
 
         // Blur the screen when user switches window (to deter screenshots)
-        window.addEventListener('blur', () => {
-            document.body.style.filter = 'blur(10px)';
-        });
+        // window.addEventListener('blur', () => {
+        //     document.body.style.filter = 'blur(10px)';
+        // });
 
         window.addEventListener('focus', () => {
             document.body.style.filter = 'none';

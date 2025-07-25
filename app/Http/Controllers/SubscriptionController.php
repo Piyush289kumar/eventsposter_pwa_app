@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subscription;
+use Razorpay\Api\Api;
 use App\Models\Plan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +30,10 @@ class SubscriptionController extends Controller
         $plan = Plan::findOrFail($planId);
         $user = Auth::user();
 
-        $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
+        // $api = new Api(env('RAZORPAY_KEY_ID'), env('RAZORPAY_KEY_SECRET'));
+        $api = new Api(config('services.razorpay.key'), config('services.razorpay.secret'));
+
+
 
         $subscription = $api->subscription->create([
             'plan_id' => $plan->razorpay_plan_id,
@@ -45,7 +50,7 @@ class SubscriptionController extends Controller
         ]);
 
         // Redirect to Razorpay checkout
-        return view('checkout', [
+        return view('layouts.core.pages.checkout', [
             'subscription_id' => $subscription['id'],
             'user' => $user,
             'plan' => $plan,
@@ -53,9 +58,54 @@ class SubscriptionController extends Controller
         ]);
     }
 
+
     public function callback(Request $request)
     {
-        // Handle payment confirmation here
-        // Verify payment signature and update subscription
+        $payload = $request->only([
+            'razorpay_payment_id',
+            'razorpay_subscription_id',
+            'razorpay_signature'
+        ]);
+
+        // Check if required data is present
+        if (!isset($payload['razorpay_payment_id'], $payload['razorpay_subscription_id'], $payload['razorpay_signature'])) {
+            return response()->json(['error' => 'Invalid request data'], 400);
+        }
+
+        try {
+            $api = new Api(env('RAZORPAY_KEY_ID'), env('RAZORPAY_KEY_SECRET'));
+
+            // ✅ Verify Signature
+            $api->utility->verifyPaymentSignature([
+                'razorpay_payment_id' => $payload['razorpay_payment_id'],
+                'razorpay_subscription_id' => $payload['razorpay_subscription_id'],
+                'razorpay_signature' => $payload['razorpay_signature'],
+            ]);
+
+            // ✅ Fetch subscription from Razorpay
+            $rzpSubscription = $api->subscription->fetch($payload['razorpay_subscription_id']);
+
+            // ✅ Find your database record
+            $subscription = Subscription::where('razorpay_subscription_id', $rzpSubscription->id)->first();
+
+            if (!$subscription) {
+                return response()->json(['error' => 'Subscription not found'], 404);
+            }
+
+            // ✅ Update your subscription record
+            $subscription->update([
+                'status' => $rzpSubscription->status, // "active", "authenticated", etc.
+                'start_at' => now(),
+                'end_at' => now()->addMonths(12), // you can also customize this based on plan
+            ]);
+
+            return response()->json(['success' => true]);
+        } catch (\Razorpay\Api\Errors\SignatureVerificationError $e) {
+            Log::error('Signature verification failed: ' . $e->getMessage());
+            return response()->json(['error' => 'Payment verification failed.'], 403);
+        } catch (\Exception $e) {
+            Log::error('Razorpay callback error: ' . $e->getMessage());
+            return response()->json(['error' => 'Something went wrong.'], 500);
+        }
     }
 }
