@@ -184,9 +184,9 @@
                         {{ $background->title ?? 'Title' }}</p>
                     <p class="olivia-lagu">{{ \Carbon\Carbon::parse($background->event_date)->format('d F Y') }}
                     </p>
-                    <p class="olivia-name" id="time-left-{{ $background->id }}" style="color:#E83F25;">
+                    {{-- <p class="olivia-name" id="time-left-{{ $background->id }}" style="color:#E83F25;">
                         Time left to delete: calculating...
-                    </p>
+                    </p> --}}
                     <div class="play-btn-selct-btn-main" style="align-items: start;">
                         <!-- Caption Toggle Button -->
                         <!-- Download Toggle Button -->
