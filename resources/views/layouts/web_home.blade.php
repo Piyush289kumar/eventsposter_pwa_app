@@ -166,8 +166,10 @@
                                     href="#features">Features</a></li>
                             <li class="nav-item"><a class="nav-link" data-scroll="scrollTo"
                                     href="#screens">screenshots</a></li>
-                            <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="#pricing">pricing</a></li>
-                            <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="#privacy-policy">Policy</a></li>
+                            <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="#pricing">pricing</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" data-scroll="scrollTo"
+                                    href="#privacy-policy">Policy</a></li>
                         </ul>
                         <div class="module-container">
                             <!--module-btn-->
@@ -213,9 +215,9 @@
                                         </svg><span>Download</span></a></div>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-6">
+                        <div class="col-12 col-lg-6 text-center items-center mx-auto">
                             <div class="hero-image"><img class="img-fluid" src="web/assets/images/mockup/iphone.png"
-                                    alt="iPhone Mockup" /></div>
+                                    alt="iPhone Mockup" style="height: 60rem;" /></div>
                         </div>
                     </div>
                     <!-- End .row-->
@@ -318,15 +320,12 @@
         <section class="about bg-pink" id="about">
             <div class="container">
                 <div class="row align-items-center text-center-xs">
-                    <div class="col-12 col-lg-6"><img class="img-fluid" src="web/assets/images/cover/about.png"
-                            alt="Book Cover" /></div>
+                    <div class="col-12 col-lg-6"><img class="img-fluid" src="web/assets/images/mockup/iphone.png"
+                            alt="iPhone Mockup" style="height: 40rem;" /></div>
                     <div class="col-12 col-lg-5">
                         <div class="heading mb-40">
                             <p class="heading-subtitle">about us</p>
-                            <h2 class="heading-title">Best Financing App in The World</h2>
-                            <p class="heading-desc">Best financing app ever in the world. Easy to use and very user
-                                friendly for mobile banking. You can control your card easily and send money some one
-                                just one click.</p>
+                            <h2 class="heading-title">Best Daily Social Media Poster App </h2>
                         </div><a class="btn btn--bordered btn--primary" href="javascript:void(0)">read more</a>
                     </div>
                 </div>
@@ -356,28 +355,28 @@
                         <div class="process-phase">
                             <p>step 1</p>
                         </div>
-                        <h2 class="process-name">start your campaign </h2>
-                        <p class="process-desc">Highly targeted landing pages will increase your results, and with A/B
+                        <h2 class="process-name">Create Account </h2>
+                        {{-- <p class="process-desc">Highly targeted landing pages will increase your results, and with A/B
                             testing takes you to the next level cost per cost per acquisition. little more about your
-                            product or.</p>
+                            product or.</p> --}}
                     </div>
                     <div class="process-panel process-panel-2">
                         <div class="process-phase">
                             <p>step 2</p>
                         </div>
-                        <h2 class="process-name">engage new users</h2>
-                        <p class="process-desc">Stop wasting money on more traffi. Get more leads on your existing
-                            traffic instead. At the end, this improves your ROI significantly. convince them to use your
-                            game</p>
+                        <h2 class="process-name">Select Frame</h2>
+                        {{-- <p class="process-desc">Highly targeted landing pages will increase your results, and with A/B
+                            testing takes you to the next level cost per cost per acquisition. little more about your
+                            product or.</p> --}}
                     </div>
                     <div class="process-panel process-panel-3">
                         <div class="process-phase">
                             <p>step 3</p>
                         </div>
-                        <h2 class="process-name">claim your reward </h2>
-                        <p class="process-desc">Higher conversion rates means you get more business from your cur in
-                            rent traffic and reduce cost peple cost per acquisition.this improves your ROI
-                            significantly.</p>
+                        <h2 class="process-name">Download Poster </h2>
+                        {{-- <p class="process-desc">Highly targeted landing pages will increase your results, and with A/B
+                            testing takes you to the next level cost per cost per acquisition. little more about your
+                            product or.</p> --}}
                     </div>
                 </div>
             </div>
@@ -398,13 +397,12 @@
                     <div class="col-12">
                         <div class="owl-carousel" data-slide="4" data-slide-rs="3" data-autoplay="true"
                             data-nav="false" data-dots="false" data-space="20" data-loop="true"
-                            data-center="false"><img src="web/assets/images/screenshots/1.png"
-                                alt="screenshot" /><img src="web/assets/images/screenshots/2.png"
-                                alt="screenshot" /><img src="web/assets/images/screenshots/3.png"
-                                alt="screenshot" /><img src="web/assets/images/screenshots/4.png"
-                                alt="screenshot" /><img src="web/assets/images/screenshots/5.png"
-                                alt="screenshot" /><img src="web/assets/images/screenshots/6.png"
-                                alt="screenshot" /><img src="web/assets/images/screenshots/7.png" alt="screenshot" />
+                            data-center="false"><img src="web/assets/images/screenshots/1.PNG"
+                                alt="screenshot" /><img src="web/assets/images/screenshots/2.PNG"
+                                alt="screenshot" /><img src="web/assets/images/screenshots/3.PNG"
+                                alt="screenshot" /><img src="web/assets/images/screenshots/4.PNG"
+                                alt="screenshot" /><img src="web/assets/images/screenshots/5.PNG"
+                                alt="screenshot" /><img src="web/assets/images/screenshots/6.PNG" alt="screenshot" />
                         </div>
                     </div>
                 </div>
@@ -414,7 +412,7 @@
       Pricing Table Section
       =============================================
       -->
-        <section class="pricing bg-clouds-red" id="pricing">
+     {{-- <section class="pricing bg-clouds-red" id="pricing">
             <div class="container">
                 <div class="row clearfix">
                     <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
@@ -582,7 +580,7 @@
             <div class="row">
                 <div class="divider-2"></div>
             </div>
-        </div>
+        </div>--}}
 
 
 
