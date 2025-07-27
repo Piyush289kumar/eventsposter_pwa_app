@@ -1,5 +1,4 @@
 @extends('layouts.core.app')
-
 @section('styles')
     <style>
         .trasnsBox-mains {
@@ -30,7 +29,6 @@
         }
     </style>
 @endsection
-
 @section('content')
     <section class="section-main section-main-ver-home">
         <div class="trasnsBox-mains mt-3">
@@ -40,7 +38,6 @@
         </div>
     </section>
 @endsection
-
 @section('scripts')
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
@@ -77,7 +74,6 @@
                 color: '#528FF0'
             }
         };
-
         document.getElementById('pay-button').onclick = function () {
             const rzp = new Razorpay(options);
             rzp.open();
