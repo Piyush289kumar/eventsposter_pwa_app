@@ -6,7 +6,6 @@
             padding: 20px;
             text-align: center;
         }
-
         .main-bg-color-btn {
             background-color: #528FF0;
             color: #fff;
@@ -16,11 +15,9 @@
             border-radius: 5px;
             transition: 0.3s;
         }
-
         .main-bg-color-btn:hover {
             background-color: #3b70c9;
         }
-
         .section-main-ver-home {
             background-color: #f9f9f9;
             min-height: 100vh;
@@ -28,7 +25,6 @@
             align-items: center;
             justify-content: center;
         }
-
         h2, p {
             margin-bottom: 15px;
         }
