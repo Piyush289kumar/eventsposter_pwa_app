@@ -92,6 +92,7 @@
                                     <li> <a href="{{ route('terms') }}">Terms & Condition</a></li>
                                     <li> <a href="{{ route('childprivacy') }}">Child Safety Policy</a></li>
                                     <li> <a href="{{ route('software-policy') }}">Software policy</a></li>
+                                    <li> <a href="{{ route('refund-policy') }}">Refund & Cancellation Policy</a></li>
                                 </ul>
                             </div>
                         </div>

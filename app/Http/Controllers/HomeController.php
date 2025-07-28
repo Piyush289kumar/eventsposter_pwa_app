@@ -55,6 +55,10 @@ class HomeController extends Controller
     {
         return view('layouts.web.software-policy');
     }
+    public function refund()
+    {
+        return view('layouts.web.refund-policy');
+    }
     public function privacy()
     {
         return view('layouts.web.privacy');
