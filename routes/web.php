@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, 'webHome'])->name('web.home');
+Route::get('/terms-and-condition', [HomeController::class, 'terms'])->name('terms');
+Route::get('/software-policy', [HomeController::class, 'softwarePolicy'])->name('software-policy');
 Route::get('/privacy-policy', [HomeController::class, 'privacy'])->name('privacy');
 Route::get('/child-safety-policy', [HomeController::class, 'childprivacy'])->name('childprivacy');
 

@@ -46,6 +46,15 @@ class HomeController extends Controller
         return view('layouts.web.home');
     }
 
+    public function terms()
+    {
+        return view('layouts.web.terms');
+    }
+
+    public function softwarePolicy()
+    {
+        return view('layouts.web.software-policy');
+    }
     public function privacy()
     {
         return view('layouts.web.privacy');
