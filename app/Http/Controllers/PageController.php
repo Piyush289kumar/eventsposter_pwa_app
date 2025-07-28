@@ -35,14 +35,7 @@ class PageController extends Controller
         return view('layouts.core.pages.invitefriends');
     }
 
-    public function privacy()
-    {
-        return view('layouts.core.pages.privacy');
-    }
-    public function childprivacy()
-    {
-        return view('layouts.core.pages.childsafetypolicy');
-    }
+
 
 }
 

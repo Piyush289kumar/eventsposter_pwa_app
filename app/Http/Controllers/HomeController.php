@@ -43,7 +43,16 @@ class HomeController extends Controller
     public function webHome()
     {
 
-        return view('layouts.web_home');
+        return view('layouts.web.home');
+    }
+
+    public function privacy()
+    {
+        return view('layouts.web.privacy');
+    }
+    public function childprivacy()
+    {
+        return view('layouts.web.childsafetypolicy');
     }
 
 

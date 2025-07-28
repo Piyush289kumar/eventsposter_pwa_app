@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, 'webHome'])->name('web.home');
-Route::get('/privacy', [PageController::class, 'privacy'])->name('privacy');
-Route::get('/child-safety-policy', [PageController::class, 'childprivacy'])->name('childprivacy');
+Route::get('/privacy-policy', [HomeController::class, 'privacy'])->name('privacy');
+Route::get('/child-safety-policy', [HomeController::class, 'childprivacy'])->name('childprivacy');
 
 
 Route::get('/phone-login', [OtpLoginController::class, 'showPhoneForm'])->name('otp.login.form');
