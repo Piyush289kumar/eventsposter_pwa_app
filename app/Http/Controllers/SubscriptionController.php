@@ -67,7 +67,6 @@ class SubscriptionController extends Controller
             'razorpay_signature'
         ]);
 
-        // Check if required data is present
         if (!isset($payload['razorpay_payment_id'], $payload['razorpay_subscription_id'], $payload['razorpay_signature'])) {
             return response()->json(['error' => 'Invalid request data'], 400);
         }
@@ -82,30 +81,57 @@ class SubscriptionController extends Controller
                 'razorpay_signature' => $payload['razorpay_signature'],
             ]);
 
-            // ✅ Fetch subscription from Razorpay
+            // ✅ Fetch Razorpay Subscription
             $rzpSubscription = $api->subscription->fetch($payload['razorpay_subscription_id']);
 
-            // ✅ Find your database record
+            // ✅ Find your DB record
             $subscription = Subscription::where('razorpay_subscription_id', $rzpSubscription->id)->first();
 
             if (!$subscription) {
                 return response()->json(['error' => 'Subscription not found'], 404);
             }
 
+            // ✅ Get the related plan
+            $plan = $subscription->plan;
+
+            // ✅ Calculate start and end dates based on plan interval
+            $startAt = now();
+            $endAt = match ($plan->interval) {
+                'monthly' => $startAt->copy()->addMonth(),
+                '3_months' => $startAt->copy()->addMonths(3),
+                '6_months' => $startAt->copy()->addMonths(6),
+                'yearly' => $startAt->copy()->addYear(),
+                default => $startAt->copy()->addMonths(12),
+            };
+
             // ✅ Update your subscription record
             $subscription->update([
-                'status' => $rzpSubscription->status, // "active", "authenticated", etc.
-                'start_at' => now(),
-                'end_at' => now()->addMonths(12), // you can also customize this based on plan
+                'status' => $rzpSubscription->status, // e.g. "active"
+                'start_at' => $startAt,
+                'end_at' => $endAt,
             ]);
 
             return response()->json(['success' => true]);
         } catch (\Razorpay\Api\Errors\SignatureVerificationError $e) {
-            Log::error('Signature verification failed: ' . $e->getMessage());
+            \Log::error('Signature verification failed: ' . $e->getMessage());
             return response()->json(['error' => 'Payment verification failed.'], 403);
         } catch (\Exception $e) {
-            Log::error('Razorpay callback error: ' . $e->getMessage());
+            \Log::error('Razorpay callback error: ' . $e->getMessage());
             return response()->json(['error' => 'Something went wrong.'], 500);
         }
+    }
+    public function cancelSubscription($subscriptionId)
+    {
+        $subscription = Subscription::where('razorpay_subscription_id', $subscriptionId)->firstOrFail();
+
+        // Cancel the subscription via Razorpay API
+        $api = new Api(env('RAZORPAY_KEY_ID'), env('RAZORPAY_KEY_SECRET'));
+        $rzpSubscription = $api->subscription->fetch($subscriptionId);
+        $rzpSubscription->cancel();
+
+        // Update the local subscription status
+        $subscription->update(['status' => 'cancelled']);
+
+        return redirect()->route('subscriptions.index')->with('success', 'Subscription cancelled successfully.');
     }
 }

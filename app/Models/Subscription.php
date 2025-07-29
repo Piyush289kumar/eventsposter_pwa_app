@@ -17,4 +17,16 @@ class Subscription extends Model
         'start_at',
         'end_at',
     ];
+
+    // 👇 Define the relationship with the Plan model
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class);
+    }
+
+    // 👇 Define the relationship with the User model (optional, but recommended)
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
