@@ -38,9 +38,9 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
+                Widgets\AccountWidget::class,
                 \App\Filament\Widgets\UserCategoryStats::class,
                 \App\Filament\Widgets\DashboardStats::class,
-                Widgets\AccountWidget::class,
                 // Widgets\FilamentInfoWidget::class,
             ])->maxContentWidth('full')
             ->middleware([
