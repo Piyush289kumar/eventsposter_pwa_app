@@ -11,6 +11,12 @@ class UserCategory extends Model
         'name',
     ];
 
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+    
+
     public function backgrounds()
     {
         return $this->belongsToMany(Background::class, 'background_user_category');
