@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="Multi-purpose Application landing page HTML5 template" />
     <title>Khyati Digi Ad</title>
+
+    <!--  Favicon -->
     <link href="assets/images/svg/logo.png" rel="icon" />
     <!--  Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
