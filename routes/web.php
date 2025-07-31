@@ -24,7 +24,7 @@ Route::get('/phone-login', [OtpLoginController::class, 'showPhoneForm'])->name('
 Route::post('/send-otp', [OtpLoginController::class, 'sendOtp'])->name('otp.send');
 
 Route::get('/otp/register', [OtpLoginController::class, 'showRegisterForm'])->name('otp.register.form');
-Route::post('/otp/register', [OtpLoginController::class, 'registerAfterOtp'])->name('otp.register' );
+Route::post('/otp/register', [OtpLoginController::class, 'registerAfterOtp'])->name('otp.register');
 
 
 Route::get('/verify-otp', [OtpLoginController::class, 'showVerifyForm'])->name('otp.verify.form');
@@ -63,9 +63,6 @@ Route::middleware([
     Route::post('/subscribe/{plan}', [SubscriptionController::class, 'subscribe'])->name('subscribe.plan');
     Route::post('/razorpay/callback', [SubscriptionController::class, 'callback'])->name('razorpay.callback');
 
-
-
-
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/profile-frames', [ProfileController::class, 'show_frames'])->name('profile.frames.show');
@@ -79,10 +76,5 @@ Route::middleware([
     Route::get('/download-poster/{id}', [PostersController::class, 'downloadCombinedImage'])->name('download.combined.poster');
     // Video Download
     Route::get('/download-video/{id}', [PostersController::class, 'downloadCombinedVideo'])->name('download.combined.poster.video');
-
-
-
-
-
 
 });
