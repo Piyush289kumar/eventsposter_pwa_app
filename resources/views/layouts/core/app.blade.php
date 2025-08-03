@@ -40,14 +40,14 @@
 
 
     {{-- Here     --}}
-    <div class="position-fixed top-0 start-0 w-100 h-100 bg-black text-white d-flex flex-column justify-content-center align-items-center z-index-sticky"
+    {{-- <div class="position-fixed top-0 start-0 w-100 h-100 bg-black text-white d-flex flex-column justify-content-center align-items-center z-index-sticky"
         style="z-index: 99999;">
         <h1 class="display-5 mb-3">Under Maintenance</h1>
         <p class="lead text-center px-3">
             We’re currently performing scheduled maintenance.<br>
             Please check back in a while.
         </p>
-    </div>
+    </div> --}}
 
 
 
